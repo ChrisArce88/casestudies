@@ -209,10 +209,8 @@ export default function CashloanExperts() {
         </ol>
 
         <h3>Dynamic Partner Landing Pages</h3>
-        <p>The first challenge was creating a scalable way to support a growing network of partner locations without 
-        building and maintaining individual landing pages for each one.</p>
 
-        <div className="flow-diagram">
+                <div className="flow-diagram">
           <div className="node">partnerdata.ts</div>
           <div className="arrow">↓</div>
           <div className="node">Dynamic Route</div>
@@ -223,6 +221,9 @@ export default function CashloanExperts() {
           <div className="arrow">↓</div>
           <div className="node">Location Info</div>
         </div>
+
+        <p>The first challenge was creating a scalable way to support a growing network of partner locations without 
+        building and maintaining individual landing pages for each one.</p>
 
         <pre className="code-block">
           <code>{`const partners = {
