@@ -96,11 +96,6 @@ li {
   max-width: 800px;
 }
 
-.toc {
-  position: sticky;
-  top: 2rem;
-  height: fit-content;
-}
 
 .content h1 {
   font-size: clamp(3rem, 5vw, 4.5rem);
@@ -150,19 +145,38 @@ li {
 
 .snapshot-card {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Responsivo automático */
   gap: 2rem;
-
-  padding: 3rem;
-
-  background: #d3d9d4;
-
+  padding: 2.5rem;
+  background: #f4f6f4; /* Un tono un poco más suave y editorial */
   border: 1px solid #3d6056;
   border-radius: 20px;
-
   margin-bottom: 3rem;
-
   transition: .3s ease;
+}
+
+/* Apuntamos directamente a los divs hijos del contenedor */
+.snapshot-card > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.snapshot-card span {
+  display: block;
+  font-family: var(--font-heading), "Cal Sans", sans-serif;
+  font-size: 3rem; 
+  line-height: 1;
+  color: #3d6056;
+  font-weight: 700;
+}
+
+.snapshot-card p {
+  font-size: 0.9rem;
+  line-height: 1.3;
+  color: #4b5563;
+  margin: 0;
+  background: transparent;
 }
 
 .snapshot-card:hover {
@@ -175,27 +189,8 @@ li {
   margin-bottom: 2rem;
 }
 
-.snapshot-card p{
-  background: transparent;
-}
 
 
-.snapshot-card p:hover{
-  color: #ececec;
-  background: transparent;
-}
-
-.snapshot-stat span {
-  display: block;
-
-  font-family: "Cal Sans";
-
-  font-size: 6rem;
-  line-height: 1;
-  
-  color: #3d6056;
-  font-weight: 600;
-}
 
 .screenshot-frame {
   margin: 3rem 0;
