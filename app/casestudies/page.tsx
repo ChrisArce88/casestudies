@@ -7,8 +7,8 @@ export default function CaseStudies() {
 
       <ul>
         <li>
-          <Link href="/case-studies/cashloan-experts">
-            Cashloan Experts
+          <Link href="/case-studies/cashloansexperts">
+            Cash <L></L>oans Experts
           </Link>
         </li>
       </ul>
