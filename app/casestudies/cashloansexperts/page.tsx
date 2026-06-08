@@ -9,6 +9,7 @@ export default function CashloanExperts() {
         <h4>Table of Contents</h4>
         <nav>
           <ul>
+            <li><a href="#snapshot">Snapshot</a></li>
             <li><a href="#overview">Overview</a></li>
             <li><a href="#problem">The Problem</a></li>
             <li><a href="#research">Research & Discovery</a></li>
@@ -24,7 +25,7 @@ export default function CashloanExperts() {
       {/* 2. El contenido principal del Caso de Estudio */}
       <article className="content">
         <section className="hero">
-          <span className="badge">Live Project</span>
+          <span className="badge"><a href="https://cashloanexperts.com" target="_blank">Live Project</a></span>
           <h1>Cashloan Experts</h1>
           <p className="hero-subtitle">Building a scalable acquisition and attribution platform for a multi-partner lending network.</p>
         </section>
@@ -32,35 +33,29 @@ export default function CashloanExperts() {
         <h3>Role</h3>
         <p>Marketing Operations Specialist</p>
 
-        <h2>Snapshot</h2>
-        <section className="snapshot-card">
-          <div>
-            <h4>Platform Capabilities</h4>
-            <p>✓ Supports 90+ partner locations</p>
-            <p>✓ Generates dynamic partner landing pages</p>
-            <p>✓ Connects multi-step applications</p>
-          </div>
+        <div className="snapshot-card">
+  <div>
+    <span>90+</span>
+    <p>Partner Locations Supported</p>
+  </div>
 
-          <div>
-            <h4>Landing Pages</h4>
-            <p>90+ Dynamic Routes</p>
-          </div>
+  <div>
+    <span>90+</span>
+    <p>Dynamic Landing Pages Generated</p>
+  </div>
 
-          <div>
-            <h4>Attribution</h4>
-            <p>✓ Supports 5 attribution scenarios</p>
-            <p>✓ Includes GBP attribution</p>
-            <p>✓ Includes UTM attribution</p>
-            <p>✓ Prepared for Google Ads attribution</p>
-          </div>
+  <div>
+    <span>5</span>
+    <p>Attribution Scenarios Tracked</p>
+  </div>
 
-          <div>
-            <h4>CRM</h4>
-            <p>✓ Integrated with Zoho Forms</p>
-            <p>✓ Reduces duplicate CRM records</p>
-            <p>✓ Integrated with Zoho CRM</p>
-          </div>
-        </section>
+  <div>
+    <span>2</span>
+    <p>Connected Application Stages</p>
+  </div>
+</div>
+
+
 
         <h3>Timeline</h3>
         <p>2025 - Present</p>

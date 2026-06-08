@@ -110,13 +110,13 @@ li {
 
 .content h2 {
   font-size: 2rem;
-  margin-top: 5rem;
-  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
 .content h3 {
   font-size: 1.25rem;
-  margin-top: 3rem;
+  margin-top: 2rem;
   margin-bottom: 1rem;
 }
 
@@ -145,21 +145,56 @@ li {
 .hero-subtitle {
   font-size: 1.3rem;
   max-width: 700px;
+  line-height: 1.1;
 }
 
 .snapshot-card {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+  gap: 2rem;
 
-  padding: 2rem;
+  padding: 3rem;
 
-  background: white;
+  background: #d3d9d4;
 
-  border: 1px solid #e5e7eb;
+  border: 1px solid #3d6056;
   border-radius: 20px;
 
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
+
+  transition: .3s ease;
+}
+
+.snapshot-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+  0 20px 40px rgba(0,0,0,.12);
+}
+
+.snapshot-card h4{
+  margin-bottom: 2rem;
+}
+
+.snapshot-card p{
+  background: transparent;
+}
+
+
+.snapshot-card p:hover{
+  color: #ececec;
+  background: transparent;
+}
+
+.snapshot-stat span {
+  display: block;
+
+  font-family: "Cal Sans";
+
+  font-size: 6rem;
+  line-height: 1;
+  
+  color: #3d6056;
+  font-weight: 600;
 }
 
 .screenshot-frame {
@@ -195,24 +230,80 @@ li {
   gap: 1rem;
 
   margin: 3rem 0;
+  padding: 3rem;
+
+  background: #fafafa;
+  border: 1px solid #e5e7eb;
 }
 
+
+
 .node {
+
+    position: relative;
+  overflow: hidden;
+
   padding: 1rem 2rem;
-
-  border: 1px solid #e5e7eb;
-
-  border-radius: 16px;
 
   background: white;
 
-  min-width: 250px;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
 
-  text-align: center;
+  transition:
+    transform 250ms ease,
+    box-shadow 250ms ease,
+    border-color 250ms ease;
+
+  cursor: default;
+}
+
+.node:hover {
+  transform: translateY(-4px) scale(1.03);
+
+  border-color: #d1d5db;
+
+  box-shadow:
+    0 20px 40px rgba(0,0,0,.08);
+}
+
+.node::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      120deg,
+      transparent,
+      rgba(255,255,255,.4),
+      transparent
+    );
+
+  transform: translateX(-100%);
+
+  transition: transform .8s ease;
+}
+
+.node:hover::before {
+  transform: translateX(100%);
 }
 
 .arrow {
   font-size: 1.5rem;
+  transition: transform 250ms ease;
+}
+
+.arrow:hover {
+  transform: translateY(4px);
+}
+
+.code-block{
+  margin: 40px 0;
+  padding: 40px;
+  background: #3d6056;
+  color: #fff;
 }
 
 @media (max-width: 1024px) {
