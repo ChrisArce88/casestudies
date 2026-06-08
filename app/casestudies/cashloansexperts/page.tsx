@@ -5,9 +5,21 @@ export default function CashloanExperts() {
   return (
     <main className="case-study">
       {/* 1. El aside primero para que el CSS Grid lo acomode correctamente a la derecha si es necesario */}
-      <aside className="toc">
-        Table of Contents
+     <aside className="toc">
+        <h4>Table of Contents</h4>
+        <nav>
+          <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#problem">The Problem</a></li>
+            <li><a href="#research">Research & Discovery</a></li>
+            <li><a href="#solution">The Solution</a></li>
+            <li><a href="#architecture">Technical Architecture</a></li>
+            <li><a href="#results">Results & Impact</a></li>
+            <li><a href="#lessons">Lessons Learned</a></li>
+          </ul>
+        </nav>
       </aside>
+
 
       {/* 2. El contenido principal del Caso de Estudio */}
       <article className="content">
@@ -80,7 +92,7 @@ export default function CashloanExperts() {
           <li>5 Attribution Scenarios</li>
         </ul>
 
-        <h2>Overview</h2>
+        <h2 id="overview">Overview</h2>
         <p>Cashloan Experts was developed in response to several operational challenges within a 
         growing lending network. The organization relied on Google Business Profiles, partner locations, 
         and online applications to generate leads, but the existing infrastructure struggled to support 
@@ -122,7 +134,7 @@ export default function CashloanExperts() {
         attribution, streamlined the application experience, and introduced scalable partner-specific landing pages 
         while remaining compatible with the organization's existing Zoho infrastructure.</p>
 
-        <h2>The Problem</h2>
+        <h2 id="problem">The Problem</h2>
         <h3>Growth Exposed Infrastructure Limitations</h3>
         <p>The existing system had been designed for a smaller operation. As the number of partners and locations 
         increased, several limitations became apparent across attribution, lead management, and scalability.</p>
@@ -176,7 +188,7 @@ export default function CashloanExperts() {
         However, the website lacked a scalable mechanism to reflect that structure, creating a disconnect between 
         what users saw in Google and what they experienced after visiting the website.</p>
 
-        <h2>Research & Discovery</h2>
+        <h2 id="research">Research & Discovery</h2>
         <p>I began by mapping the existing acquisition journey from first touchpoint to CRM record creation.</p>
         <p>This analysis revealed several recurring issues:</p>
         <ul>
@@ -188,7 +200,7 @@ export default function CashloanExperts() {
         <p>Rather than solving each issue individually, I focused on designing a platform capable 
         of addressing them as part of a unified acquisition system.</p>
 
-        <h2>Solution</h2>
+        <h2 id="solution">Solution</h2>
         <ol>
           <li>Dynamic Partner Landing Pages</li>
           <li>Attribution Framework</li>
@@ -335,7 +347,7 @@ export default function CashloanExperts() {
         <p>Beyond improving operational efficiency, this approach also created a more seamless experience for applicants 
         by minimizing redundant data entry.</p>
 
-        <h2>Technical Architecture</h2>
+        <h2 id="architecture">Technical Architecture</h2>
         <p>The platform was built using a lightweight architecture that leveraged existing company systems while introducing a more scalable frontend layer.</p>
 
         <div className="flow-diagram">
@@ -362,7 +374,7 @@ export default function CashloanExperts() {
           <li>Attribution: URL parameters and location-based logic</li>
         </ul>
 
-        <h2>Results & Impact</h2>
+        <h2 id="results">Results & Impact</h2>
         <section className="impact-grid">
           <div className="impact-card">
             <h4>90+ locations</h4>
@@ -390,7 +402,7 @@ export default function CashloanExperts() {
           </div>
         </section>
 
-        <h2>Lessons Learned</h2>
+        <h2 id="lessons">Lessons Learned</h2>
         <p>One of the biggest lessons from this project was that attribution, user experience, and operational efficiency are often deeply connected.</p>
         <p>What initially appeared to be a website redesign evolved into a broader acquisition infrastructure project that touched CRM workflows, partner management, attribution systems, and customer experience.</p>
         <p>The project reinforced the importance of designing scalable systems early, particularly when supporting a growing network of partners and locations.</p>
