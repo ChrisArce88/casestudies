@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Geist } from "next/font/google";
 import { Cal_Sans } from "next/font/google";
@@ -13,12 +12,6 @@ const calSans = Cal_Sans({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-cal-sans",
-});
-
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
 });
 
 
