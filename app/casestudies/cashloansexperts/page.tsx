@@ -281,9 +281,9 @@ export default function CashloanExperts() {
           {/* Mini-Carrusel con fotos de las Landings Dinámicas */}
           <MiniCarousel 
             images={[
-              { src: "/placeholder.png", alt: "Dynamic Page Variant - Phoenix Dashboard Location", width: 800, height: 450 },
-              { src: "/placeholder.png", alt: "Dynamic Page Variant - Tucson Responsive Mobile View", width: 800, height: 450 },
-              { src: "/placeholder.png", alt: "Dynamic Page Variant - Integrated Local GMB Reviews Section", width: 800, height: 450 }
+              { src: "/placeholder.png", alt: "Dynamic Page Variant - Phoenix Dashboard Location", fullWidth: 1900, fullHeight: 4500 },
+              { src: "/placeholder.png", alt: "Dynamic Page Variant - Tucson Responsive Mobile View", fullWidth: 1900, fullHeight: 4500 },
+              { src: "/placeholder.png", alt: "Dynamic Page Variant - Integrated Local GMB Reviews Section", fullWidth: 1900, fullHeight: 4500 }
             ]} 
             onImageClick={openModal}
           />
