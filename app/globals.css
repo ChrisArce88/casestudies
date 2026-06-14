@@ -86,11 +86,42 @@ li {
   color: #6b7280;
   text-decoration: none;
   transition: color 0.2s ease;
+  position: relative;
+  padding-left: 1rem;
+  display: inline-block;
 }
 
 .toc a:hover {
   color: #111827;
 }
+
+
+
+.toc a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%) scaleY(0); /* Centrado vertical y colapsado */
+  width: 3px; /* Un pelín más grueso se nota más elegante */
+  height: 1.1rem;
+  background: #3d6056;
+  border-radius: 2px; /* Esquinas ligeramente redondeadas tipo píldora */
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s;
+  opacity: 0;
+}
+
+.toc a.active {
+  color: #111827;
+  font-weight: 500; /* Le da un extra de jerarquía visual */
+}
+
+.toc a.active::before {
+  transform: translateY(-50%) scaleY(1); /* Se expande suavemente */
+  opacity: 1;
+  background: #3d6056;
+}
+
 
 .content {
   max-width: 800px;
@@ -294,11 +325,395 @@ li {
   transform: translateY(4px);
 }
 
+
+/* --- ESTILOS DEL ÁRBOL RECTO Y COHESIVO --- */
+
+.tree-container {
+  width: 100%;
+  overflow-x: auto;
+  padding: 3rem 1rem;
+  background: transparent; 
+  border: 1px solid #e5e7eb;
+  margin: 3rem 0;
+  display: block !important; 
+  text-align: center;
+}
+
+.tree {
+  display: inline-block;
+  white-space: nowrap;
+  margin: 0 auto;
+}
+
+.tree ul {
+  padding-top: 30px;
+  position: relative;
+  display: flex !important; 
+  flex-direction: row !important;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.tree li {
+  text-align: center;
+  position: relative;
+  padding: 30px 10px 0 10px;
+  display: block;
+  flex: 1 1 0%;
+}
+
+/* --- SELECTOR COMPUESTO: Match perfecto con tus otros diagramas --- */
+.tree .node {
+  position: relative;
+  overflow: hidden;
+  padding: 1rem 2rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  color: var(--foreground); /* Mismo color de fuente global */
+  
+  /* Tus transiciones e interacciones mágicas */
+  transition:
+    transform 250ms ease,
+    box-shadow 250ms ease,
+    border-color 250ms ease;
+  cursor: default;
+
+  /* Estructura del árbol para evitar colapso lineal */
+  display: inline-block !important;
+  white-space: normal;
+  max-width: 220px;
+  width: 100%;
+  
+  /* --- COPIA EXACTA DE TU BORDER RADIUS --- */
+  border-radius: 16px !important; 
+  z-index: 2;
+}
+
+/* --- Hover idéntico a tus otros diagramas --- */
+.tree .node:hover {
+  transform: translateY(-4px) scale(1.03) !important;
+  border-color: #d1d5db !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,.08) !important;
+}
+
+/* --- Tu destello de luz linear --- */
+.tree .node::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: transform .8s ease;
+  z-index: 1;
+}
+
+.tree .node:hover::before {
+  transform: translateX(100%);
+}
+
+/* --- LÍNEAS CONECTORAS: Mismo color que el FONT (High Contrast) --- */
+.tree li::before, 
+.tree li::after,
+.tree ul ul::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 50%;
+  border-top: 1px solid var(--foreground); /* Forzado al color de tu fuente */
+  width: 50%;
+  height: 30px;
+  z-index: 1;
+}
+
+.tree li::after {
+  right: auto;
+  left: 50%;
+  border-left: 1px solid var(--foreground); /* Forzado al color de tu fuente */
+}
+
+.tree li:only-child::after, .tree li:only-child::before { display: none !important; }
+.tree li:only-child { padding-top: 0; }
+.tree li:first-child::before, .tree li:last-child::after { border: 0 none !important; }
+.tree li:last-child::before { border-right: 1px solid var(--foreground); }
+.tree ul ul::before { border-left: 1px solid var(--foreground); width: 0; left: 50%; }
+
+/* --- Las etiquetas de decisión flotantes (Selectores Directos Blindados) --- */
+.tree .label-path {
+  position: absolute;
+  top: 4px; 
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 2px 8px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 4px; 
+  z-index: 3;
+  margin: 10px 0;
+  
+  /* Transición suave para el nuevo efecto hover */
+  transition: transform 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
+  cursor: default;
+}
+
+/* --- MICRO-HOVER PARA LAS ETIQUETAS --- */
+.tree .label-path:hover {
+  transform: translateX(-50%) scale(1.1); /* Se hace un pelín más grande manteniendo el centrado */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* ¡EL FIX DE COLOR! 
+   Usamos > para que solo aplique al label hijo DIRECTO de esa rama 
+*/
+
+/* Conservar Verde para SI exclusivamente */
+.tree .branch-yes > .label-path { 
+  background: #f0fdf4; 
+  color: #16a34a !important; 
+  border: 1px solid #bbf7d0;
+}
+
+.tree .branch-yes > .label-path:hover {
+  background: #dcfce7; /* Un verde un reflejo más encendido al pasar el mouse */
+}
+
+/* Conservar Rojo para NO exclusivamente */
+.tree .branch-no > .label-path { 
+  background: #fef2f2; 
+  color: #dc2626 !important; 
+  border: 1px solid #fecaca;
+}
+
+.tree .branch-no > .label-path:hover {
+  background: #fee2e2; /* Un rojo un reflejo más encendido al pasar el mouse */
+}
+
 .code-block{
   margin: 40px 0;
   padding: 40px;
   background: #3d6056;
   color: #fff;
+}
+
+/* --- Modal (Lightbox) para Full Screenshots --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 10, 10, 0.9); /* Un fondo más oscuro para centrar la atención */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Alinea al inicio para que el scroll empiece arriba */
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  cursor: zoom-out;
+  overflow-y: auto; /* Permite el scroll vertical en toda la pantalla del modal */
+  padding: 60px 20px; /* Espacio arriba y abajo para que no pegue con los bordes */
+}
+
+.modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 900px; /* Un ancho ideal para apreciar los detalles de una web sin que sea gigante */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: default;
+}
+
+.modal-close {
+  position: fixed; /* Fixed para que siempre esté visible aunque hagas scroll hacia abajo */
+  top: 20px;
+  right: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 200;
+  cursor: pointer;
+  z-index: 1010;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  transition: background 0.2s;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.modal-image-container {
+  background-color: #ffffff;
+  width: 100%;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  border-radius: 0px !important; /* Manteniendo tus esquinas rectas */
+  overflow: hidden;
+}
+
+.modal-image {
+  width: 100%;
+  height: auto; /* Al setear height auto, respetará la proporción real (aspect ratio) */
+  display: block;
+  object-fit: contain;
+  border-radius: 0px !important;
+}
+
+.modal-caption {
+  color: #e5e7eb;
+  font-size: 0.95rem;
+  margin-top: 20px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+/* --- Mini-Carousel Styles --- */
+.carousel-wrapper {
+  position: relative;
+  margin: 1rem 0 2rem;
+}
+
+.carousel-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.carousel-slide figure {
+  margin: 0; /* Anular margenes por defecto */
+}
+
+.carousel-slide .screenshot-frame {
+  cursor: default; /* El carrusel se navega, no se clica *aquí* para modal */
+}
+
+.carousel-slide .screenshot-frame figcaption {
+  padding-bottom: 30px; /* Espacio para los dots */
+}
+
+
+/* Dots */
+.carousel-dots {
+  display: flex;
+  padding: 10px 0;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.carousel-dot {
+  border: none;
+  width: 8px;
+  height: 8px;
+  background: #d1d5db;
+  border-radius: 50%;
+  margin: 0 4px;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.carousel-dot:focus {
+  outline: none;
+}
+
+.carousel-dot.active {
+  background: #3d6056; /* Tu color de acento green-700 */
+}
+
+/* Contenedor general para capturas solas y carruseles */
+.screenshot-frame {
+  width: 100%;
+  margin: 1rem 0 2rem;
+  overflow: hidden;
+  position: relative;
+  background-color: #f9fafb; /* Un fondo sutil por si la imagen tarda en cargar */
+  border: 1px solid #e5e7eb; /* Un borde fino que delimita la captura recta */
+  
+  /* --- ESQUINAS RECTAS PARA EVITAR EL GLITCH --- */
+  border-radius: 0px !important; 
+}
+
+/* Forzar que las imágenes dentro mantengan esquinas rectas */
+.screenshot-frame img,
+.carousel-image,
+.clickable-screenshot {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0px !important; /* Adiós redondeado, adiós parpadeo */
+}
+
+/* Modificador por si quieres acotar el ancho máximo en desktop */
+.screenshot-frame.square-frame {
+  max-width: 800px; /* Regresa a su comportamiento horizontal original */
+  margin: 0 auto 2rem;
+}
+
+/* Forzar contenedor con aspecto 16:9 uniforme en los slides */
+.screenshot-frame.fixed-aspect-frame {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 0px !important; /* Manteniendo tus esquinas rectas */
+  overflow: hidden;
+}
+
+.screenshot-frame.fixed-aspect-frame .aspect-container {
+  width: 100%;
+  height: 450px; /* Tu tope uniforme para el modo slide */
+  position: relative;
+  overflow: hidden;
+}
+
+.screenshot-frame.fixed-aspect-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* Recorta armónicamente el exceso */
+  object-position: top center; /* Muestra el inicio/hero de la página en el preview */
+  border-radius: 0px !important;
+}
+
+.clickable-screenshot {
+  transition: opacity 0.2s;
+}
+
+.screenshot-frame:not(.no-hover):hover .clickable-screenshot {
+  opacity: 0.9;
+}
+
+.zoom-hint {
+  font-style: italic;
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* Modificador para imágenes verticales grandes en el flujo */
+.screenshot-frame.vertical-frame {
+  text-align: center;
+}
+
+.screenshot-frame.vertical-frame Image {
+  max-width: 350px; /* O el ancho que prefieras para verticales en flujo */
+  height: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 1024px) {
