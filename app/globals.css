@@ -20,6 +20,12 @@
   }
 }
 
+/* Aplica un offset global a todas las secciones con ID para los saltos del TOC */
+[id] {
+  scroll-margin-top: 3rem; /* ¡EL TRUCO! Deja espacio libre arriba al saltar */
+}
+
+/* Opcional: Hace que el scroll al hacer clic en el TOC sea suave como la seda */
 html {
   scroll-behavior: smooth;
 }
@@ -37,7 +43,6 @@ h4 {
 }
 
 body,
-p,
 li {
   font-family: var(--font-body);
   background: var(--background);
@@ -105,7 +110,7 @@ li {
   transform: translateY(-50%) scaleY(0); /* Centrado vertical y colapsado */
   width: 3px; /* Un pelín más grueso se nota más elegante */
   height: 1.1rem;
-  background: #3d6056;
+  background: #271732;
   border-radius: 2px; /* Esquinas ligeramente redondeadas tipo píldora */
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s;
   opacity: 0;
@@ -119,53 +124,88 @@ li {
 .toc a.active::before {
   transform: translateY(-50%) scaleY(1); /* Se expande suavemente */
   opacity: 1;
-  background: #3d6056;
+  background: #271732;
 }
 
 
 .content {
   max-width: 800px;
+  margin-bottom: 0;
 }
 
 
 .content h1 {
-  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-size: clamp(2rem, 5vw, 4.5rem);
   line-height: 1;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .content h2 {
   font-size: 2rem;
   margin-top: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
 }
 
 .content h3 {
   font-size: 1.25rem;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .content p {
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
+  line-height: 1.4;
+  margin-top: 1.5rem;
+  margin-bottom: 2.5rem;
   color: #4b5563;
 }
 
 .content li {
-  line-height: 1.8;
+  line-height: 1.6;
+  color: #4b5563;
+}
+
+ul {
+  list-style-type: circle; 
+  margin-left: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.findings-list li {
+  line-height: 1.6;
+  color: #4b5563;
+  padding-left: 1rem;
 }
 
 .hero {
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 }
 
+/* Le quitamos el padding al badge contenedor */
 .badge {
   display: inline-block;
-  padding: .5rem .75rem;
-  border-radius: 999px;
+  padding: 0; /* Limpiamos el padding original */
   background: #f3f4f6;
-  font-size: .875rem;
+  border-radius: 999px;
+  overflow: hidden; /* Mantiene el enlace dentro de la píldora redondeada */
+}
+
+/* Se lo aplicamos directamente al enlace para expandir el área de clic */
+.badge a {
+  display: inline-block;
+  padding: .5rem .75rem; /* El padding que tenías antes */
+  color: #271732;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+/* Cambia el fondo de toda la píldora al pasar el mouse */
+.badge a:hover {
+  background: #ddd7e0; 
+  color: #471b48;
 }
 
 .hero-subtitle {
@@ -173,6 +213,8 @@ li {
   max-width: 700px;
   line-height: 1.1;
 }
+
+
 
 .snapshot-card {
   display: grid;
@@ -266,51 +308,28 @@ li {
 
 .node {
 
-    position: relative;
+  position: relative;
   overflow: hidden;
 
   padding: 1rem 2rem;
 
   background: white;
 
-  border: 1px solid #e5e7eb;
+  border: 1px solid #aaa;
   border-radius: 16px;
 
   transition:
-    transform 250ms ease,
-    box-shadow 250ms ease,
-    border-color 250ms ease;
-
-  cursor: default;
+   ease 250ms;
 }
 
 .node:hover {
-  transform: translateY(-4px) scale(1.03);
-
-  border-color: #d1d5db;
+  transform: translateY(-4px);
 
   box-shadow:
-    0 20px 40px rgba(0,0,0,.08);
+    0 12px 24px rgba(0,0,0,.08);
 }
 
-.node::before {
-  content: "";
 
-  position: absolute;
-  inset: 0;
-
-  background:
-    linear-gradient(
-      120deg,
-      transparent,
-      rgba(255,255,255,.4),
-      transparent
-    );
-
-  transform: translateX(-100%);
-
-  transition: transform .8s ease;
-}
 
 .node:hover::before {
   transform: translateX(100%);
@@ -325,24 +344,57 @@ li {
   transform: translateY(4px);
 }
 
+.flow-branches {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 
 /* --- ESTILOS DEL ÁRBOL RECTO Y COHESIVO --- */
 
 .tree-container {
   width: 100%;
   overflow-x: auto;
-  padding: 3rem 1rem;
-  background: transparent; 
+  padding: 1rem 0;
+  background: transparent!important; /* Un fondo sutil para delimitar el área de juego */
   border: 1px solid #e5e7eb;
-  margin: 3rem 0;
+  border-radius: 20px;
+  margin: 1rem 0 0;
   display: block !important; 
   text-align: center;
+  
+  /* Suavizado de scroll para trackpads */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* --- ESTILIZADO DE LA BARRA PREMIUM (Webkit) --- */
+.tree-container::-webkit-scrollbar {
+  height: 8px; /* Ultra delgada */
+}
+
+.tree-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.tree-container::-webkit-scrollbar-thumb {
+  background: #d1d5db; /* Gris sutil */
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+
+.tree-container::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af; /* Se oscurece un poco al interactuar */
 }
 
 .tree {
   display: inline-block;
   white-space: nowrap;
   margin: 0 auto;
+  background: transparent!important;
 }
 
 .tree ul {
@@ -368,7 +420,7 @@ li {
   overflow: hidden;
   padding: 1rem 2rem;
   background: white;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #aaaaaa;
   color: var(--foreground); /* Mismo color de fuente global */
   
   /* Tus transiciones e interacciones mágicas */
@@ -396,21 +448,7 @@ li {
   box-shadow: 0 20px 40px rgba(0,0,0,.08) !important;
 }
 
-/* --- Tu destello de luz linear --- */
-.tree .node::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255, 255, 255, 0.4),
-    transparent
-  );
-  transform: translateX(-100%);
-  transition: transform .8s ease;
-  z-index: 1;
-}
+
 
 .tree .node:hover::before {
   transform: translateX(100%);
@@ -497,7 +535,7 @@ li {
 .code-block{
   margin: 40px 0;
   padding: 40px;
-  background: #3d6056;
+  background: #120b17;
   color: #fff;
 }
 
@@ -635,7 +673,7 @@ li {
 }
 
 .carousel-dot.active {
-  background: #3d6056; /* Tu color de acento green-700 */
+  background: #271732; /* Tu color de acento green-700 */
 }
 
 /* Contenedor general para capturas solas y carruseles */
@@ -716,6 +754,434 @@ li {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+.snapshot-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 0;
+}
+
+.snapshot-bubble {
+  width: 140px;
+  aspect-ratio: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+ background: linear-gradient(
+  135deg,
+  #271732 0%,
+  #481A47 100%
+);
+
+  border: 1px solid rgba(61, 96, 86, 0.15);
+  border-radius: 15%;
+
+  transition:
+    transform 250ms ease,
+    box-shadow 250ms ease;
+}
+
+.snapshot-bubble:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 16px 32px rgba(0,0,0,.08);
+}
+
+.snapshot-bubble span {
+  font-family: var(--font-heading);
+
+  font-size: 2.5rem;
+  line-height: 1;
+
+  color: #fff;
+}
+
+.snapshot-bubble p {
+  margin: .5rem 0 0;
+
+  max-width: 90px;
+
+  font-size: .85rem;
+  line-height: 1;
+
+  color: #fff;
+
+}
+
+.project-meta {
+  margin: 2rem 0;
+  max-width: 720px;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+
+/* --- Contenedor opcional para agrupar toda la ficha técnica --- */
+.meta-container {
+  max-width: 720px; /* Ancho controlado para que no se desarme en pantallas gigantes */
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- La Fila de la Ficha Técnica (Aislada y con Aire) --- */
+.meta-row {
+  display: flex !important;
+  align-items: flex-start !important; /* Cambiado a flex-start por si el texto de la derecha toma 2 líneas */
+  
+  /* Incrementamos el padding para quitar lo apretado (0.75rem arriba/abajo) */
+  padding: 0.75rem 0 !important; 
+  
+  /* Forzamos la línea divisora con un gris un poco más marcado */
+  border-bottom: 1px solid #d1d5db !important; 
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* Quitamos la línea de la última fila */
+.meta-row:last-child {
+  border-bottom: none !important;
+}
+
+/* --- Columna Izquierda: Atributo --- */
+.meta-row span {
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  color: #4b5563 !important; 
+
+  flex: 0 0 140px !important; 
+  text-align: left !important;
+
+  line-height: 1.4 !important; 
+}
+
+/* --- Columna Derecha: El Dato --- */
+.meta-row p {
+  margin: 0 60px !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  color: #111827 !important; /* Negro tipográfico de alto contraste */
+  
+  /* Le damos una altura de línea más generosa para que respire */
+  line-height: 1.4 !important; 
+  
+  flex: 1 !important; 
+  text-align: left !important;
+  background: transparent !important;
+}
+
+.research-grid {
+  display: grid;
+  gap: 1rem;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(220px, 1fr));
+
+  margin: 2rem 0 3rem;
+}
+
+/* --- Tarjetas de Investigación (Research Cards) --- */
+/* --- Tarjetas de Investigación con Hover Suave --- */
+.research-card {
+  position: relative;
+  display: block;
+  padding: 1.5rem !important;
+  background-color: #ddd7e0 !important;
+  border: 1px solid #aaa !important;
+  border-radius: 16px !important;
+  
+  /* --- EL TRUCO DE LA TRANSICIÓN TOTAL ---
+     Definimos la transición aquí para que aplique cuando el mouse ENTRA y SALE */
+  transition: 
+    background-color 300ms ease, /* Tu color morado sutil */
+    transform 300ms ease,        /* Para que flote suavemente */
+    box-shadow 300ms ease,       /* Para que la sombra aparezca poco a poco */
+    border-color 300ms ease !important;
+    
+  cursor: default;
+  z-index: 1; /* Necesario para que el cambio de z-index en hover funcione */
+}
+
+/* --- Estado Hover Unificado y Blindado --- */
+.content .research-card:hover,
+.research-card:hover {
+  background-color: #d9c4dc !important; /* Tu color morado sutil */
+  border-color: #c0b8c7 !important;   /* Un borde un pelín más oscuro */
+  
+  /* Agregamos el micro-movimiento hacia arriba para la consistencia visual */
+  transform: translateY(-b5px); 
+  
+  /* Sombra suave para dar profundidad */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+  
+  z-index: 10; /* Sube ligeramente para que la sombra no se corte con otros elementos */
+}
+
+.research-card h4 {
+  margin-bottom: .5rem;
+
+  font-size: 1rem;
+}
+
+.research-card p {
+  margin: 0;
+  background: transparent;
+  font-size: .9rem;
+}
+
+.architecture-system {
+  margin: 4rem 0;
+  padding: 3rem;
+
+  border: 1px solid #e5e7eb;
+  background: #fafafa;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+
+  position: relative;
+}
+
+.architecture-parent {
+  position: relative;
+
+  padding: .75rem 1.5rem;
+
+  border-radius: 10px!important;
+
+  background: white;
+  border: 1px solid #aaaaaa;
+
+  font-weight: 500;
+  transition: ease 250ms;
+}
+
+.architecture-parent:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 12px 24px rgba(0,0,0,.08);
+}
+
+.architecture-parent::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 100%;
+
+  width: 1px;
+  height: 2rem;
+
+  background: #d1d5db;
+
+  transform: translateX(-50%);
+}
+
+.architecture-core {
+  position: relative;
+
+  padding: 2rem;
+
+  max-width: 420px;
+
+  text-align: center;
+
+  background: white;
+
+  border: 1px solid #aaaaaa;
+  border-radius: 10px;
+
+  box-shadow:
+    0 8px 24px rgba(0,0,0,.04);
+    transition: ease 250ms;
+}
+
+.architecture-core:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 12px 24px rgba(0,0,0,.08);
+}
+
+.architecture-core h4 {
+  margin-bottom: .5rem;
+  text-transform: uppercase;
+}
+
+.architecture-core p {
+  margin: 0;
+
+  color: #6b7280;
+
+  background: transparent;
+}
+
+.architecture-branches {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+
+  flex-wrap: wrap;
+}
+
+.architecture-branches::before {
+  content: "";
+
+  position: absolute;
+
+  top: -2rem;
+  left: 50%;
+
+  width: 1px;
+  height: 2rem;
+
+  background: #d1d5db;
+
+  transform: translateX(-50%);
+}
+
+.architecture-feature {
+  position: relative;
+
+  padding: 1rem 1.5rem;
+
+  min-width: 160px;
+
+  text-align: center;
+
+  background: white;
+
+  border: 1px solid #aaaaaa;
+  border-radius: 16px;
+
+  transition:
+    transform 250ms ease,
+    box-shadow 250ms ease;
+}
+
+.architecture-feature:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 12px 24px rgba(0,0,0,.08);
+}
+
+.architecture-feature::before {
+  content: "";
+
+  position: absolute;
+
+  top: -2rem;
+  left: 50%;
+
+  width: 1px;
+  height: 2rem;
+
+  background: #d1d5db;
+
+  transform: translateX(-50%);
+}
+
+.case-navigation {
+  margin-top: 5rem;
+  padding-top: 3rem;
+
+  border-top: 1px solid #aaaaaa;
+
+  display: grid;
+  gap: 2rem;
+}
+
+.next-case-card {
+  padding: 2rem;
+
+  background: #ddd7e0;
+
+  border: 1px solid #aaaaaa;
+  border-radius: 20px;
+
+  transition: ease 250ms;
+}
+
+.next-case-card:hover {
+  background: #d9c4dc;
+}
+
+.next-case-card span {
+  font-size: .75rem;
+
+  text-transform: uppercase;
+  letter-spacing: .08em;
+
+  color: #171732;
+}
+
+.next-case-card h3 {
+  margin: .75rem 0;
+}
+
+.next-case-card p {
+  margin-bottom: 1.5rem;
+
+  color: #171732;
+}
+
+.next-case-card a {
+  color: #271732;
+
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-button {
+  display: inline-flex;
+  width: fit-content;
+
+  padding: .9rem 1.2rem;
+
+  border-radius: 999px;
+
+  text-decoration: none;
+
+  transition: all .2s ease;
+}
+
+.nav-button.secondary {
+   background: linear-gradient(
+  135deg,
+  #271732 0%,
+  #481A47 100%
+);
+  color: white;
+}
+
+.nav-button.secondary:hover {
+  transform: translateY(-2px);
+}
+
+.nav-button.ghost {
+  color: #171727;
+}
+
+.nav-button.ghost:hover {
+  color: #481a47;
+}
+
+
 @media (max-width: 1024px) {
   .case-study {
     grid-template-columns: 1fr;
@@ -728,5 +1194,47 @@ li {
     margin-bottom: 2rem;
     border-bottom: 1px solid #e5e7eb;
     padding-bottom: 1.5rem;
+  }
+
+  .meta-row {
+    grid-template-columns: 1fr;
+
+    gap: 0.5rem;
+  }
+
+  .architecture-branches {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .architecture-feature::before {
+    display: none;
+  }
+
+  .tree ul {
+    flex-direction: column !important;
+    align-items: center !important;
+    padding-top: 10px;
+  }
+
+  .tree li {
+    padding: 20px 0 0 0 !important;
+  }
+
+  /* Ocultamos las líneas conectoras viejas en mobile para que no hagan un caos visual */
+  .tree li::before, 
+  .tree li::after,
+  .tree ul ul::before {
+    display: none !important;
+  }
+
+  /* Ajustamos las etiquetas flotantes para que se sientan como conectores verticales */
+  .tree .label-path {
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    transform: none !important;
+    display: inline-block;
+    margin: 10px auto !important;
   }
 }

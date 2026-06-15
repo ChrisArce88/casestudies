@@ -29,6 +29,7 @@ export default function CashloanExperts() {
   };
 
   useEffect(() => {
+    // Lista exacta de las secciones declaradas en tu TOC y tu artículo
     const ids = [
       "snapshot",
       "overview",
@@ -40,30 +41,45 @@ export default function CashloanExperts() {
       "lessons"
     ];
     
-    const elements = ids.map(id => document.getElementById(id)).filter(Boolean);
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-          }
-        });
-      },
-      {
-        rootMargin: "-20% 0px -60% 0px", 
-      }
-    );
-
-    elements.forEach((el) => observer.observe(el!));
-
-    return () => {
-      elements.forEach((el) => observer.unobserve(el!));
+    const observerOptions = {
+      root: null, // Escanea el viewport del navegador entero
+      rootMargin: "-20% 0px -60% 0px", // Ventana central-superior de lectura activa
+      threshold: 0,
     };
-  }, []);
+
+    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        // Solo cambiamos el estado cuando la sección entra activamente en la franja de lectura
+        if (entry.isIntersecting) {
+          setActiveId(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, observerOptions);
+
+    // Buscamos los elementos dentro del efecto para asegurar que ya existen en el DOM
+    ids.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    // Limpieza al desmontar el componente para evitar memory leaks
+    return () => {
+      ids.forEach((id) => {
+        const element = document.getElementById(id);
+        if (element) {
+          observer.unobserve(element);
+        }
+      });
+    };
+  }, []); // El array vacío asegura que esto solo se ejecute una vez al cargar la página
 
   return (
     <>
+      {/* Tu JSX continúa aquí abajo sin cambios */}
       <main className="case-study">
         {/* TOC (Table of Contents) */}
         <aside className="toc">
@@ -85,64 +101,73 @@ export default function CashloanExperts() {
         <article className="content">
           <section className="hero">
             <span className="badge"><a href="https://cashloanexperts.com" target="_blank" rel="noreferrer">Live Project</a></span>
-            <h1>Cashloan Experts</h1>
+            <h1>Cash Loans Experts</h1>
             <p className="hero-subtitle">Building a scalable acquisition and attribution platform for a multi-partner lending network.</p>
           </section>
+          
+<section id="snapshot">   
+          <section className="snapshot-grid">
+ 
+  <div className="snapshot-bubble">
+    <span>90+</span>
+    <p>Partner Locations</p>
+  </div>
 
-          <div id="snapshot" className="snapshot-card">
-            <div>
-              <span>90+</span>
-              <p>Partner Locations Supported</p>
-            </div>
-            <div>
-              <span>90+</span>
-              <p>Dynamic Landing Pages Generated</p>
-            </div>
-            <div>
-              <span>5</span>
-              <p>Attribution Scenarios Tracked</p>
-            </div>
-            <div>
-              <span>2</span>
-              <p>Connected Application Stages</p>
-            </div>
-          </div>
+  <div className="snapshot-bubble">
+    <span>90+</span>
+    <p>Landing Pages</p>
+  </div>
 
-          <h3>Role</h3>
-          <p>Marketing Operations Specialist</p>
+  <div className="snapshot-bubble">
+    <span>5</span>
+    <p>Attribution Paths</p>
+  </div>
 
-          <h3>Timeline</h3>
-          <p>2025 - Present</p>
+  <div className="snapshot-bubble">
+    <span>2</span>
+    <p>Application Stages</p>
+  </div>
+</section>
+</section>
 
-          <h3>Status</h3>
-          <p>Live</p>
+  <section className="project-meta">
 
-          <h3>Responsibilities</h3>
-          <ul>
-            <li>Research</li>
-            <li>UX Design</li>
-            <li>Development</li>
-            <li>Attribution Architecture</li>
-            <li>CRM Integration</li>
-          </ul>
+<div className="meta-container">
+  <div className="meta-row">
+    <span>Role</span>
+    <p>Marketing Operations Specialist</p>
+  </div>
 
-          <h3>Stack</h3>
-          <ul>
-            <li>Next.js</li>
-            <li>TypeScript</li>
-            <li>Zoho Forms</li>
-            <li>Zoho CRM</li>
-          </ul>
+  <div className="meta-row">
+    <span>Timeline</span>
+    <p>2025 – Present</p>
+  </div>
 
-          <h3>Scale</h3>
-          <ul>
-            <li>90+ Partner Locations</li>
-            <li>90+ Dynamic Landing Pages</li>
-            <li>5 Attribution Scenarios</li>
-          </ul>
+  <div className="meta-row">
+    <span>Status</span>
+    <p>Live</p>
+  </div>
 
-          <h2 id="overview">Overview</h2>
-<p>Cashloan Experts was developed in response...</p>
+  <div className="meta-row">
+    <span>Stack</span>
+    <p>Next.js · TypeScript · Zoho Forms · Zoho CRM</p>
+  </div>
+
+  <div className="meta-row">
+    <span>Responsibilities</span>
+    <p>
+      Research · UX Design · Development · Attribution Architecture · CRM Integration
+    </p>
+  </div>
+</div>
+</section>
+
+
+<h2 id="overview">Overview</h2>
+<p>Cashloan Experts was developed in response to several operational challenges within a growing lending network. 
+  The organization relied on Google Business Profiles, partner locations, and online applications to generate 
+  leads, but the existing infrastructure struggled to support accurate attribution, 
+  scalable partner growth, and efficient lead management.</p>
 
 <MiniCarousel 
   images={[
@@ -245,36 +270,92 @@ export default function CashloanExperts() {
           <p>Partner-specific Google Business Profiles represented unique locations, reviews, and local presence. However, the website lacked a scalable mechanism to reflect that structure, creating a disconnect between what users saw in Google and what they experienced after visiting the website.</p>
 
           <h2 id="research">Research & Discovery</h2>
-          <p>I began by mapping the existing acquisition journey from first touchpoint to CRM record creation.</p>
-          <p>This analysis revealed several recurring issues:</p>
-          <ul>
-            <li>Attribution information was lost across multiple entry points.</li>
-            <li>Applicants generated duplicate records during the application process.</li>
-            <li>Partner-specific experiences were difficult to maintain.</li>
-            <li>Local business profiles and website content operated independently.</li>
-          </ul>
+          <p>Before proposing solutions, I mapped the existing acquisition journey from first touchpoint 
+            through CRM record creation to understand where operational friction occurred.</p>
+          <p>Rather than evaluating the website in isolation, I examined the broader system connecting local discovery, 
+            qualification workflows, and internal lead management.</p>
+
+          <div className="research-grid">
+
+  <div className="research-card">
+    <h4>Lead Lifecycle Mapping</h4>
+    <p>Traced the applicant journey from acquisition through CRM entry.</p>
+  </div>
+
+  <div className="research-card">
+    <h4>Workflow Review</h4>
+    <p>Reviewed partner and internal qualification processes.</p>
+  </div>
+
+  <div className="research-card">
+    <h4>Attribution Audit</h4>
+    <p>Identified where source information was being lost.</p>
+  </div>
+
+  <div className="research-card">
+    <h4>Pattern Analysis</h4>
+    <p>Investigated duplicate record creation and continuity gaps.</p>
+  </div>
+
+  <div className="research-card">
+    <h4>Experience Comparison</h4>
+    <p>Compared Google presence against the website experience.</p>
+  </div>
+
+</div>
+
           <p>Rather than solving each issue individually, I focused on designing a platform capable of addressing them as part of a unified acquisition system.</p>
 
-          <h2 id="solution">Solution</h2>
-          <ol>
-            <li>Dynamic Partner Landing Pages</li>
-            <li>Attribution Framework</li>
-            <li>Unified Application Experience</li>
-            <li>CRM Data Continuity</li>
-          </ol>
+          <ul className="findings-list">
+  <li>Attribution information was lost across multiple entry points.</li>
+
+  <li>Applicants generated duplicate CRM records during qualification.</li>
+
+  <li>The application experience felt fragmented between stages.</li>
+
+  <li>Partner-specific experiences required significant manual effort.</li>
+
+  <li>Google Business Profiles and website experiences operated independently.</li>
+</ul>
+
+<p>Rather than addressing these as isolated issues, I focused on designing a platform capable of resolving 
+  them through a unified acquisition system.</p>
+  
+  <section id="solution">
+  <h2>The Solution</h2>
 
           <h3>Dynamic Partner Landing Pages</h3>
           <div className="flow-diagram">
-            <div className="node">partnerdata.ts</div>
-            <div className="arrow">↓</div>
-            <div className="node">Dynamic Route</div>
-            <div className="arrow">↓</div>
-            <div className="node">Landing Page</div>
-            <div className="arrow">↓</div>
-            <div className="node">Reviews</div>
-            <div className="arrow">↓</div>
-            <div className="node">Location Info</div>
-          </div>
+
+  <div className="node">partnerdata.ts</div>
+
+  <div className="arrow">↓</div>
+
+  <div className="node">Dynamic Route</div>
+
+  <div className="arrow">↓</div>
+
+  <div className="node">Landing Page</div>
+
+  <div className="arrow">↓</div>
+
+  <div className="flow-branches">
+
+    <div className="node">
+      Reviews
+    </div>
+
+ <div className="node">
+      +
+    </div>
+
+    <div className="node">
+      Location Info
+    </div>
+
+  </div>
+
+</div>
 
           <p>The first challenge was creating a scalable way to support a growing network of partner locations without building and maintaining individual landing pages for each one.</p>
 
@@ -343,39 +424,55 @@ export default function CashloanExperts() {
             <div className="node decision-node">Is this a Partner URL?</div>
             
             <ul>
-              {/* Rama Izquierda: Sí (Fin del flujo) */}
+              {/* 1. Rama Socio: SÍ */}
               <li className="branch-yes">
                 <span className="label-path">Yes</span>
                 <div className="node success-node">Partner Attribution</div>
               </li>
               
-              {/* Rama Derecha: No (Continúa a UTM) */}
+              {/* Rama Socio: NO */}
               <li className="branch-no">
                 <span className="label-path">No</span>
-                <div className="node decision-node">UTM Present?</div>
+                <div className="node decision-node">Google Ads (GCLID)?</div>
                 
                 <ul>
-                  {/* Sub-rama UTM: Sí */}
+                  {/* 2. Sub-rama Google Ads: SÍ */}
                   <li className="branch-yes">
                     <span className="label-path">Yes</span>
-                    <div className="node success-node">Campaign Source</div>
+                    <div className="node success-node">Google Ads Channel</div>
                   </li>
                   
-                  {/* Sub-rama UTM: No */}
+                  {/* Sub-rama Google Ads: NO */}
                   <li className="branch-no">
                     <span className="label-path">No</span>
-                    <div className="node decision-node">GBP?</div>
+                    <div className="node decision-node">UTM Present?</div>
                     
                     <ul>
-                      {/* Sub-rama GBP: Sí */}
+                      {/* 3. Sub-rama UTM: SÍ */}
                       <li className="branch-yes">
                         <span className="label-path">Yes</span>
-                        <div className="node success-node">GBP</div>
+                        <div className="node success-node">Campaign Source</div>
                       </li>
-                      {/* Sub-rama GBP: No */}
+                      
+                      {/* Sub-rama UTM: NO */}
                       <li className="branch-no">
                         <span className="label-path">No</span>
-                        <div className="node direct-node">Direct</div>
+                        <div className="node decision-node">GBP?</div>
+                        
+                        <ul>
+                          {/* 4. Sub-rama GBP: SÍ */}
+                          <li className="branch-yes">
+                            <span className="label-path">Yes</span>
+                            <div className="node success-node">GBP (Local)</div>
+                          </li>
+                          
+                          {/* 5. Sub-rama GBP: NO → DIRECTO */}
+                          <li className="branch-no">
+                            <span className="label-path">No</span>
+                            <div className="node direct-node">Direct Traffic</div>
+                          </li>
+                        </ul>
+
                       </li>
                     </ul>
 
@@ -436,23 +533,40 @@ export default function CashloanExperts() {
           </figure>
 
           <p>Beyond improving operational efficiency, this approach also created a more seamless experience for applicants by minimizing redundant data entry.</p>
+</section>
 
-          <h2 id="architecture">Technical Architecture</h2>
+
+<section id="architecture">
+          <h2>Technical Architecture</h2>
           <p>The platform was built using a lightweight architecture that leveraged existing company systems while introducing a more scalable frontend layer.</p>
 
-          <div className="flow-diagram">
-            <div className="node">Partner URL</div>
-            <div className="arrow">↓</div>
-            <div className="node">Attribution Layer</div>
-            <div className="arrow">↓</div>
-            <div className="node">Next.js Frontend</div>
-            <div className="arrow">↓</div>
-            <div className="node">Local Storage</div>
-            <div className="arrow">↓</div>
-            <div className="node">Zoho Forms</div>
-            <div className="arrow">↓</div>
-            <div className="node">Zoho CRM</div>
-          </div>
+         <div className="architecture-system">
+
+  <div className="architecture-parent">
+    Partner Network
+  </div>
+
+  <div className="architecture-core">
+    <h4>Acquisition Platform</h4>
+  </div>
+
+  <div className="architecture-branches">
+
+    <div className="architecture-feature">
+      <span>Attribution</span>
+    </div>
+
+    <div className="architecture-feature">
+      <span>UX</span>
+    </div>
+
+    <div className="architecture-feature">
+      <span>CRM Continuity</span>
+    </div>
+
+  </div>
+
+</div>
 
           <ul>
             <li>Frontend: Next.js + TypeScript</li>
@@ -463,15 +577,51 @@ export default function CashloanExperts() {
             <li>Routing: Dynamic URL-based partner pages</li>
             <li>Attribution: URL parameters and location-based logic</li>
           </ul>
+</section>
 
-        
-          <h2 id="lessons">Lessons Learned</h2>
+<section id="lessons">      
+          <h2>Lessons Learned</h2>
           <p>One of the biggest lessons from this project was that attribution, user experience, and operational efficiency are often deeply connected.</p>
           <p>What initially appeared to be a website redesign evolved into a broader acquisition infrastructure project that touched CRM workflows, partner management, attribution systems, and customer experience.</p>
           <p>The project reinforced the importance of designing scalable systems early, particularly when supporting a growing network of partners and locations.</p>
 
-          <p>View the live implementation →</p>
-        </article>
+ <a
+    href="https://cashloanexperts.com"
+    target="_blank"
+    rel="noreferrer"
+    className="nav-button secondary"
+  >
+    View Live ↗
+  </a>
+</section>  
+
+ <section className="case-navigation">
+
+  <div className="next-case-card">
+
+    <span>Next Case Study</span>
+
+    <h3>Champion Auto Finance</h3>
+
+    <p>
+      Improving continuity across a multi-step qualification journey.
+    </p>
+
+    <a href="/case-studies/champion">
+      Explore Project →
+    </a>
+
+  </div>
+
+  <a
+    href="/case-studies"
+    className="nav-button ghost"
+  >
+    ← Back to Index
+  </a>
+
+</section>
+</article>
       </main>
 
       {/* Modal / Lightbox */}
