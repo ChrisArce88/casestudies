@@ -20,12 +20,11 @@
   }
 }
 
-/* Aplica un offset global a todas las secciones con ID para los saltos del TOC */
+
 [id] {
-  scroll-margin-top: 3rem; /* ¡EL TRUCO! Deja espacio libre arriba al saltar */
+  scroll-margin-top: 3rem; 
 }
 
-/* Opcional: Hace que el scroll al hacer clic en el TOC sea suave como la seda */
 html {
   scroll-behavior: smooth;
 }
@@ -266,7 +265,7 @@ ul {
 
 
 .screenshot-frame {
-  margin: 3rem 0;
+  margin: 4rem 0;
 
   background: white;
 
@@ -287,7 +286,7 @@ ul {
 .screenshot-frame figcaption {
   padding: 1rem 1.25rem;
   font-size: .9rem;
-  color: #6b7280;
+  color: #444850;
 }
 
 .flow-diagram {
@@ -679,7 +678,7 @@ ul {
 /* Contenedor general para capturas solas y carruseles */
 .screenshot-frame {
   width: 100%;
-  margin: 1rem 0 2rem;
+  margin: 1rem 0 3rem;
   overflow: hidden;
   position: relative;
   background-color: #f9fafb; /* Un fondo sutil por si la imagen tarda en cargar */
@@ -694,9 +693,22 @@ ul {
 .carousel-image,
 .clickable-screenshot {
   width: 100%;
-  height: auto;
+  /* Eliminamos el height: auto global agresivo para controlar subtipos */
   display: block;
-  border-radius: 0px !important; /* Adiós redondeado, adiós parpadeo */
+  border-radius: 0px !important;
+}
+
+.screenshot-frame:not(.fixed-aspect-frame):not(.vertical-frame) {
+  width: 100%;
+  max-width: 800px; /* Evita que en pantallas enormes se dispare el ancho */
+  margin: 1rem auto 2rem; /* Centra la imagen sola */
+}
+
+.screenshot-frame:not(.fixed-aspect-frame):not(.vertical-frame) img {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Forzamos la proporción matemática */
+  object-fit: cover;    /* Corta los excesos de capturas muy largas */
+  object-position: top center; /* Prioriza ver la cabecera del dashboard */
 }
 
 /* Modificador por si quieres acotar el ancho máximo en desktop */
@@ -724,9 +736,8 @@ ul {
 .screenshot-frame.fixed-aspect-frame img {
   width: 100%;
   height: 100%;
-  object-fit: cover;        /* Recorta armónicamente el exceso */
-  object-position: top center; /* Muestra el inicio/hero de la página en el preview */
-  border-radius: 0px !important;
+  object-fit: cover;
+  object-position: top center;
 }
 
 .clickable-screenshot {

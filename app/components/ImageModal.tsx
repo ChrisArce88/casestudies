@@ -42,7 +42,7 @@ export default function ImageModal({ isOpen, onClose, src, alt, width = 1920, he
             width={width}
             height={height}
             className="modal-image"
-            quality={100}
+            quality={95}
           />
         </div>
         <figcaption className="modal-caption">{alt}</figcaption>

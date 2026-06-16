@@ -53,7 +53,7 @@ export default function MiniCarousel({ images, onImageClick }: MiniCarouselProps
                   priority={index === 0}
                 />
               </div>
-              <figcaption>{image.alt} <span className="zoom-hint">(Click para ver pantalla completa)</span></figcaption>
+              <figcaption>{image.alt} <span className="zoom-hint">(Click to expand)</span></figcaption>
             </figure>
           </div>
         ))}
