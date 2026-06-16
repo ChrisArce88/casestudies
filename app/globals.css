@@ -1193,59 +1193,238 @@ ul {
 }
 
 
-@media (max-width: 1024px) {
-  .case-study {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 2rem 1rem;
-  }
-  .toc {
-    position: relative;
-    top: 0;
-    margin-bottom: 2rem;
-    border-bottom: 1px solid #e5e7eb;
-    padding-bottom: 1.5rem;
-  }
+@media (max-width: 1024px)  {
 
-  .meta-row {
-    grid-template-columns: 1fr;
-
-    gap: 0.5rem;
-  }
-
-  .architecture-branches {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .architecture-feature::before {
-    display: none;
-  }
-
-  .tree ul {
-    flex-direction: column !important;
-    align-items: center !important;
-    padding-top: 10px;
-  }
-
-  .tree li {
-    padding: 20px 0 0 0 !important;
-  }
-
-  /* Ocultamos las líneas conectoras viejas en mobile para que no hagan un caos visual */
-  .tree li::before, 
-  .tree li::after,
-  .tree ul ul::before {
-    display: none !important;
-  }
-
-  /* Ajustamos las etiquetas flotantes para que se sientan como conectores verticales */
-  .tree .label-path {
-    position: relative !important;
-    top: 0 !important;
-    left: 0 !important;
-    transform: none !important;
-    display: inline-block;
-    margin: 10px auto !important;
-  }
+.case-study {
+display: flex;
+flex-direction: column;
+padding: 1.5rem;
+max-width: 100%;
 }
+
+/* Hide the Table of Contents on tablet/mobile to maximize readability */
+.toc {
+display: none;
+}
+
+.content {
+max-width: 100%;
+width: 100%;
+padding: 0;
+}
+}
+
+/* Breakpoint for Mobile Devices (Viewport < 768px) /
+@media (max-width: 768px) {
+/ Hero Typography & Spacing */
+.hero h1 {
+font-size: 2.1rem;
+line-height: 1.25;
+margin-top: 1rem;
+}
+
+.hero-subtitle {
+font-size: 1.05rem;
+line-height: 1.5;
+}
+
+/* Snapshot Grid: Reposition to 2x2 layout */
+.snapshot-grid {
+grid-template-columns: repeat(2, 1fr);
+gap: 0.85rem;
+margin-top: 1.5rem;
+}
+
+.snapshot-bubble {
+padding: 1rem 0.75rem;
+}
+
+.snapshot-bubble span {
+font-size: 1.85rem;
+}
+
+.snapshot-bubble p {
+font-size: 0.75rem;
+}
+
+/* Metadata Container */
+.meta-container {
+padding: 1rem;
+}
+
+.meta-row {
+flex-direction: column;
+align-items: flex-start;
+gap: 0.25rem;
+padding: 0.75rem 0;
+}
+
+.meta-row span {
+width: auto;
+font-size: 0.8rem;
+text-transform: uppercase;
+letter-spacing: 0.05em;
+}
+
+/* Research Grid: Transition 5 cards to a vertical stack */
+.research-grid {
+grid-template-columns: 1fr;
+gap: 0.75rem;
+}
+
+.research-card {
+padding: 1.15rem;
+}
+
+
+.flow-diagram,
+.tree-container,
+.architecture-system {
+position: relative;
+overflow: auto !important;
+max-width: 100%;
+border: 1px solid #2e3035;
+border-radius: 8px;
+background: #0d0e11;
+padding: 1.25rem;
+cursor: grab;
+-webkit-overflow-scrolling: touch; 
+}
+
+
+.flow-diagram:active,
+.tree-container:active,
+.architecture-system:active {
+cursor: grabbing;
+}
+
+.tree {
+min-width: 680px; 
+padding-bottom: 0.5rem;
+}
+
+
+.flow-diagram {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 0.5rem;
+}
+
+.flow-diagram .node {
+font-size: 0.85rem;
+padding: 0.75rem 1rem;
+width: 100%;
+max-width: 280px;
+text-align: center;
+white-space: nowrap;
+}
+
+.flow-branches {
+flex-direction: column;
+width: 100%;
+align-items: center;
+gap: 0.5rem;
+}
+
+/* Systems architecture dynamic container */
+.architecture-system {
+display: flex;
+flex-direction: column;
+align-items: center;
+min-width: 320px;
+}
+
+.architecture-branches {
+flex-direction: column;
+gap: 0.75rem;
+width: 100%;
+align-items: center;
+}
+
+.architecture-feature {
+width: 100%;
+max-width: 240px;
+text-align: center;
+}
+
+/* Custom subtle scrollbar styling to avoid native desktop scroll bars on mobile */
+.flow-diagram::-webkit-scrollbar,
+.tree-container::-webkit-scrollbar,
+.architecture-system::-webkit-scrollbar {
+height: 5px;
+width: 5px;
+}
+
+.flow-diagram::-webkit-scrollbar-thumb,
+.tree-container::-webkit-scrollbar-thumb,
+.architecture-system::-webkit-scrollbar-thumb {
+background: #2e3035;
+border-radius: 10px;
+}
+
+/*
+==========================================================================
+FIGCAPTION, IMAGES & NAVIGATION
+==========================================================================
+*/
+
+.screenshot-frame {
+margin: 1.5rem 0;
+padding: 0.5rem;
+}
+
+figcaption {
+font-size: 0.8rem;
+line-height: 1.45;
+margin-top: 0.75rem;
+}
+
+.zoom-hint {
+display: inline-block;
+color: #602160; /* Prominent active link color for accessibility */
+font-weight: 500;
+}
+
+/* Code Block configuration */
+.code-block {
+padding: 1rem;
+overflow-x: auto;
+font-size: 0.75rem;
+border-radius: 6px;
+}
+
+.code-caption {
+font-size: 0.8rem !important;
+margin-bottom: 2rem !important;
+}
+
+/* Footer and case study navigation */
+.case-navigation {
+flex-direction: column-reverse;
+gap: 1.25rem;
+}
+
+.next-case-card {
+padding: 1.25rem;
+}
+
+.nav-button {
+width: 100%;
+text-align: center;
+justify-content: center;
+}
+
+
+@media (max-width: 480px) {
+.snapshot-grid {
+grid-template-columns: 1fr; 
+}
+
+.findings-list li {
+font-size: 0.85rem;
+line-height: 1.4;
+margin-bottom: 0.75rem;
+}
+}
+

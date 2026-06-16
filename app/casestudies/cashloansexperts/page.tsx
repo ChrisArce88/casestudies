@@ -100,7 +100,7 @@ export default function CashloanExperts() {
         {/* Contenido Principal */}
         <article className="content">
           <section className="hero">
-            <span className="badge"><a href="https://cashloanexperts.com" target="_blank" rel="noreferrer">Live Project</a></span>
+            <span className="badge"><a href="https://cashloansexperts.com" target="_blank" rel="noreferrer">Live Project</a></span>
             <h1>Cash Loans Experts</h1>
             <p className="hero-subtitle">Building a scalable acquisition and attribution platform for a multi-partner lending network.</p>
           </section>
@@ -194,7 +194,7 @@ export default function CashloanExperts() {
             partner-specific experiences were difficult to maintain, and <b>applicants frequently 
             generated duplicate CRM records</b> throughout the application process.</p>
 
-          <figure className="screenshot-frame" onClick={() => openModal("/placeholder.png", "Previous infrastructure form limitations diagram", 800, 450)}>
+          <figure className="screenshot-frame" onClick={() => openModal("/images/duplicateleads1163.png", "Zoho CRM audit view showing 1,163 duplicate lead records generated in a single month", 800, 450)}>
              <Image 
     src="/images/duplicateleads1163.png" 
     alt="Zoho CRM audit view showing 1,163 duplicate lead records generated in a single month"
@@ -242,10 +242,10 @@ export default function CashloanExperts() {
             making it difficult to measure partner performance and understand where applicants 
             originated.</p>
 
-          <figure className="screenshot-frame" onClick={() => openModal("/images/crm_duplicates_may.png", "Zoho CRM duplicate records audit - May 2026", 800, 450)}>
+          <figure className="screenshot-frame" onClick={() => openModal("/images/gbp_channels.png", "Example of a GBP that could only be identified by phone number only", 800, 450)}>
   <Image 
     src="/images/gbp_channels.png" 
-    alt="Zoho CRM audit view showing 1,163 duplicate lead records generated in a single month"
+    alt="Example of a GBP that could only be identified by phone number only"
     width={800}
     height={450}
     priority
@@ -452,7 +452,7 @@ export default function CashloanExperts() {
             the website experience,</b> allowing users to see content that reflected the specific 
             location they had discovered online.</p>
 
-<figure className="screenshot-frame" onClick={() => openModal("/images/sitemap_dynamic.png", "Dynamic XML sitemap structure for search engine indexation", 800, 450)}>
+<figure className="screenshot-frame" onClick={() => openModal("/images/clexsitemap.png", "Dynamic XML sitemap structure for search engine indexation", 800, 450)}>
   <Image 
     src="/images/clexsitemap.png" 
     alt="Dynamic XML sitemap showing programmatic partner location routing"
