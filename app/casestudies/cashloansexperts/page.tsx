@@ -684,7 +684,7 @@ export default function CashloanExperts() {
             when <b>supporting a growing network of partners and locations.</b></p>
 
  <a
-    href="https://cashloanexperts.com"
+    href="https://cashloansexperts.com"
     target="_blank"
     rel="noreferrer"
     className="nav-button secondary"
