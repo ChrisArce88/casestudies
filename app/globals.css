@@ -16,10 +16,8 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
-    
   }
 }
-
 
 [id] {
   scroll-margin-top: 3rem; 
@@ -47,8 +45,6 @@ li {
   background: var(--background);
   color: var(--foreground);
 }
-
-
 
 .case-study {
   display: grid;
@@ -99,8 +95,6 @@ li {
   color: #111827;
 }
 
-
-
 .toc a::before {
   content: "";
   position: absolute;
@@ -126,12 +120,10 @@ li {
   background: #271732;
 }
 
-
 .content {
   max-width: 800px;
   margin-bottom: 0;
 }
-
 
 .content h1 {
   font-size: clamp(2rem, 5vw, 4.5rem);
@@ -213,8 +205,6 @@ ul {
   line-height: 1.1;
 }
 
-
-
 .snapshot-card {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Responsivo automático */
@@ -253,29 +243,20 @@ ul {
 
 .snapshot-card:hover {
   transform: translateY(-4px);
-  box-shadow:
-  0 20px 40px rgba(0,0,0,.12);
+  box-shadow: 0 20px 40px rgba(0,0,0,.12);
 }
 
 .snapshot-card h4{
   margin-bottom: 2rem;
 }
 
-
-
-
 .screenshot-frame {
   margin: 4rem 0;
-
   background: white;
-
   border: 1px solid #e5e7eb;
   border-radius: 20px;
-
   overflow: hidden;
-
-  box-shadow:
-    0 8px 30px rgba(0,0,0,.08);
+  box-shadow: 0 8px 30px rgba(0,0,0,.08);
 }
 
 .screenshot-frame img {
@@ -293,42 +274,27 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   gap: 1rem;
-
   margin: 3rem 0;
   padding: 3rem;
-
   background: #fafafa;
   border: 1px solid #e5e7eb;
 }
 
-
-
 .node {
-
   position: relative;
   overflow: hidden;
-
   padding: 1rem 2rem;
-
   background: white;
-
   border: 1px solid #aaa;
   border-radius: 16px;
-
-  transition:
-   ease 250ms;
+  transition: ease 250ms;
 }
 
 .node:hover {
   transform: translateY(-4px);
-
-  box-shadow:
-    0 12px 24px rgba(0,0,0,.08);
+  box-shadow: 0 12px 24px rgba(0,0,0,.08);
 }
-
-
 
 .node:hover::before {
   transform: translateX(100%);
@@ -350,9 +316,7 @@ ul {
   flex-wrap: wrap;
 }
 
-
 /* --- ESTILOS DEL ÁRBOL RECTO Y COHESIVO --- */
-
 .tree-container {
   width: 100%;
   overflow-x: auto;
@@ -447,8 +411,6 @@ ul {
   box-shadow: 0 20px 40px rgba(0,0,0,.08) !important;
 }
 
-
-
 .tree .node:hover::before {
   transform: translateX(100%);
 }
@@ -505,10 +467,7 @@ ul {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* ¡EL FIX DE COLOR! 
-   Usamos > para que solo aplique al label hijo DIRECTO de esa rama 
-*/
-
+/* ¡EL FIX DE COLOR! Usamos > para que solo aplique al label hijo DIRECTO de esa rama */
 /* Conservar Verde para SI exclusivamente */
 .tree .branch-yes > .label-path { 
   background: #f0fdf4; 
@@ -642,7 +601,6 @@ ul {
   padding-bottom: 30px; /* Espacio para los dots */
 }
 
-
 /* Dots */
 .carousel-dots {
   display: flex;
@@ -672,7 +630,7 @@ ul {
 }
 
 .carousel-dot.active {
-  background: #271732; /* Tu color de acento green-700 */
+  background: #271732; /* Tu color de acento */
 }
 
 /* Contenedor general para capturas solas y carruseles */
@@ -693,7 +651,6 @@ ul {
 .carousel-image,
 .clickable-screenshot {
   width: 100%;
-  /* Eliminamos el height: auto global agresivo para controlar subtipos */
   display: block;
   border-radius: 0px !important;
 }
@@ -773,56 +730,41 @@ ul {
 }
 
 .snapshot-bubble {
-  width: 140px;
+  width: 170px;
   aspect-ratio: 1;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   text-align: center;
-
- background: linear-gradient(
-  135deg,
-  #271732 0%,
-  #481A47 100%
-);
-
+  background: linear-gradient(
+    135deg,
+    #271732 0%,
+    #481A47 100%
+  );
   border: 1px solid rgba(61, 96, 86, 0.15);
   border-radius: 15%;
-
-  transition:
-    transform 250ms ease,
-    box-shadow 250ms ease;
+  transition: transform 250ms ease, box-shadow 250ms ease;
 }
 
 .snapshot-bubble:hover {
   transform: translateY(-6px);
-
-  box-shadow:
-    0 16px 32px rgba(0,0,0,.08);
+  box-shadow: 0 16px 32px rgba(0,0,0,.08);
 }
 
 .snapshot-bubble span {
   font-family: var(--font-heading);
-
   font-size: 2.5rem;
   line-height: 1;
-
   color: #fff;
 }
 
 .snapshot-bubble p {
   margin: .5rem 0 0;
-
   max-width: 90px;
-
   font-size: .85rem;
   line-height: 1;
-
   color: #fff;
-
 }
 
 .project-meta {
@@ -831,7 +773,6 @@ ul {
   border-top: 1px solid #e5e7eb;
   border-bottom: 1px solid #e5e7eb;
 }
-
 
 /* --- Contenedor opcional para agrupar toda la ficha técnica --- */
 .meta-container {
@@ -844,12 +785,8 @@ ul {
 /* --- La Fila de la Ficha Técnica (Aislada y con Aire) --- */
 .meta-row {
   display: flex !important;
-  align-items: flex-start !important; /* Cambiado a flex-start por si el texto de la derecha toma 2 líneas */
-  
-  /* Incrementamos el padding para quitar lo apretado (0.75rem arriba/abajo) */
+  align-items: flex-start !important; 
   padding: 0.75rem 0 !important; 
-  
-  /* Forzamos la línea divisora con un gris un poco más marcado */
   border-bottom: 1px solid #d1d5db !important; 
   width: 100% !important;
   box-sizing: border-box;
@@ -867,10 +804,8 @@ ul {
   text-transform: uppercase !important;
   letter-spacing: 0.08em !important;
   color: #4b5563 !important; 
-
   flex: 0 0 140px !important; 
   text-align: left !important;
-
   line-height: 1.4 !important; 
 }
 
@@ -880,10 +815,7 @@ ul {
   font-size: 0.9rem !important;
   font-weight: 500 !important;
   color: #111827 !important; /* Negro tipográfico de alto contraste */
-  
-  /* Le damos una altura de línea más generosa para que respire */
   line-height: 1.4 !important; 
-  
   flex: 1 !important; 
   text-align: left !important;
   background: transparent !important;
@@ -892,15 +824,11 @@ ul {
 .research-grid {
   display: grid;
   gap: 1rem;
-
-  grid-template-columns:
-    repeat(auto-fit, minmax(220px, 1fr));
-
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   margin: 2rem 0 3rem;
 }
 
 /* --- Tarjetas de Investigación (Research Cards) --- */
-/* --- Tarjetas de Investigación con Hover Suave --- */
 .research-card {
   position: relative;
   display: block;
@@ -908,37 +836,27 @@ ul {
   background-color: #ddd7e0 !important;
   border: 1px solid #aaa !important;
   border-radius: 16px !important;
-  
-  /* --- EL TRUCO DE LA TRANSICIÓN TOTAL ---
-     Definimos la transición aquí para que aplique cuando el mouse ENTRA y SALE */
   transition: 
-    background-color 300ms ease, /* Tu color morado sutil */
-    transform 300ms ease,        /* Para que flote suavemente */
-    box-shadow 300ms ease,       /* Para que la sombra aparezca poco a poco */
+    background-color 300ms ease, 
+    transform 300ms ease,        
+    box-shadow 300ms ease,       
     border-color 300ms ease !important;
-    
   cursor: default;
-  z-index: 1; /* Necesario para que el cambio de z-index en hover funcione */
+  z-index: 1; 
 }
 
 /* --- Estado Hover Unificado y Blindado --- */
 .content .research-card:hover,
 .research-card:hover {
-  background-color: #d9c4dc !important; /* Tu color morado sutil */
-  border-color: #c0b8c7 !important;   /* Un borde un pelín más oscuro */
-  
-  /* Agregamos el micro-movimiento hacia arriba para la consistencia visual */
-  transform: translateY(-b5px); 
-  
-  /* Sombra suave para dar profundidad */
+  background-color: #d9c4dc !important; 
+  border-color: #c0b8c7 !important;   
+  transform: translateY(-5px); 
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
-  
-  z-index: 10; /* Sube ligeramente para que la sombra no se corte con otros elementos */
+  z-index: 10; 
 }
 
 .research-card h4 {
   margin-bottom: .5rem;
-
   font-size: 1rem;
 }
 
@@ -951,79 +869,56 @@ ul {
 .architecture-system {
   margin: 4rem 0;
   padding: 3rem;
-
   border: 1px solid #e5e7eb;
   background: #fafafa;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-
   position: relative;
 }
 
 .architecture-parent {
   position: relative;
-
   padding: .75rem 1.5rem;
-
   border-radius: 10px!important;
-
   background: white;
   border: 1px solid #aaaaaa;
-
   font-weight: 500;
   transition: ease 250ms;
 }
 
 .architecture-parent:hover {
   transform: translateY(-4px);
-
-  box-shadow:
-    0 12px 24px rgba(0,0,0,.08);
+  box-shadow: 0 12px 24px rgba(0,0,0,.08);
 }
 
 .architecture-parent::after {
   content: "";
-
   position: absolute;
-
   left: 50%;
   top: 100%;
-
   width: 1px;
   height: 2rem;
-
   background: #d1d5db;
-
   transform: translateX(-50%);
 }
 
 .architecture-core {
   position: relative;
-
   padding: 2rem;
-
   max-width: 420px;
-
   text-align: center;
-
   background: white;
-
   border: 1px solid #aaaaaa;
   border-radius: 10px;
-
-  box-shadow:
-    0 8px 24px rgba(0,0,0,.04);
-    transition: ease 250ms;
+  box-shadow: 0 8px 24px rgba(0,0,0,.04);
+  transition: ease 250ms;
 }
 
 .architecture-core:hover {
   transform: translateY(-4px);
-
-  box-shadow:
-    0 12px 24px rgba(0,0,0,.08);
+  box-shadow: 0 12px 24px rgba(0,0,0,.08);
 }
 
 .architecture-core h4 {
@@ -1033,98 +928,69 @@ ul {
 
 .architecture-core p {
   margin: 0;
-
   color: #6b7280;
-
   background: transparent;
 }
 
 .architecture-branches {
   position: relative;
-
   display: flex;
   justify-content: center;
   gap: 2rem;
-
   flex-wrap: wrap;
 }
 
 .architecture-branches::before {
   content: "";
-
   position: absolute;
-
   top: -2rem;
   left: 50%;
-
   width: 1px;
   height: 2rem;
-
   background: #d1d5db;
-
   transform: translateX(-50%);
 }
 
 .architecture-feature {
   position: relative;
-
   padding: 1rem 1.5rem;
-
   min-width: 160px;
-
   text-align: center;
-
   background: white;
-
   border: 1px solid #aaaaaa;
   border-radius: 16px;
-
-  transition:
-    transform 250ms ease,
-    box-shadow 250ms ease;
+  transition: transform 250ms ease, box-shadow 250ms ease;
 }
 
 .architecture-feature:hover {
   transform: translateY(-4px);
-
-  box-shadow:
-    0 12px 24px rgba(0,0,0,.08);
+  box-shadow: 0 12px 24px rgba(0,0,0,.08);
 }
 
 .architecture-feature::before {
   content: "";
-
   position: absolute;
-
   top: -2rem;
   left: 50%;
-
   width: 1px;
   height: 2rem;
-
   background: #d1d5db;
-
   transform: translateX(-50%);
 }
 
 .case-navigation {
   margin-top: 5rem;
   padding-top: 3rem;
-
   border-top: 1px solid #aaaaaa;
-
   display: grid;
   gap: 2rem;
 }
 
 .next-case-card {
   padding: 2rem;
-
   background: #ddd7e0;
-
   border: 1px solid #aaaaaa;
   border-radius: 20px;
-
   transition: ease 250ms;
 }
 
@@ -1134,10 +1000,8 @@ ul {
 
 .next-case-card span {
   font-size: .75rem;
-
   text-transform: uppercase;
   letter-spacing: .08em;
-
   color: #171732;
 }
 
@@ -1147,13 +1011,11 @@ ul {
 
 .next-case-card p {
   margin-bottom: 1.5rem;
-
   color: #171732;
 }
 
 .next-case-card a {
   color: #271732;
-
   text-decoration: none;
   font-weight: 500;
 }
@@ -1161,22 +1023,18 @@ ul {
 .nav-button {
   display: inline-flex;
   width: fit-content;
-
   padding: .9rem 1.2rem;
-
   border-radius: 999px;
-
   text-decoration: none;
-
   transition: all .2s ease;
 }
 
 .nav-button.secondary {
-   background: linear-gradient(
-  135deg,
-  #271732 0%,
-  #481A47 100%
-);
+  background: linear-gradient(
+    135deg,
+    #271732 0%,
+    #481A47 100%
+  );
   color: white;
 }
 
@@ -1192,309 +1050,469 @@ ul {
   color: #481a47;
 }
 
+@media (max-width: 1024px) {
+  .case-study {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    max-width: 100%;
+  }
 
-@media (max-width: 1024px)  {
+  /* Hide the Table of Contents on tablet/mobile to maximize readability */
+  .toc {
+    display: none;
+  }
 
-.case-study {
-display: flex;
-flex-direction: column;
-padding: 1.5rem;
-max-width: 100%;
+  .content {
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+  }
+
+  
 }
 
-/* Hide the Table of Contents on tablet/mobile to maximize readability */
-.toc {
-display: none;
-}
-
-.content {
-max-width: 100%;
-width: 100%;
-padding: 0;
-}
-}
-
-/* Breakpoint for Mobile Devices (Viewport < 768px) /
+/* Breakpoint for Mobile Devices (Viewport < 768px) */
 @media (max-width: 768px) {
-/ Hero Typography & Spacing */
-.hero h1 {
-font-size: 2.1rem;
-line-height: 1.25;
-margin-top: 1rem;
-}
+  /* Hero Typography & Spacing */
+  .hero h1 {
+    font-size: 2.1rem;
+    line-height: 1.25;
+    margin-top: 1rem;
+  }
 
-.hero-subtitle {
-font-size: 1.05rem;
-line-height: 1.5;
-}
+  .hero-subtitle {
+    font-size: 1.05rem;
+    line-height: 1.5;
+  }
 
-/* Snapshot Grid: Reposition to 2x2 layout */
-.snapshot-grid {
-grid-template-columns: repeat(2, 1fr);
-gap: 0.85rem;
-margin-top: 1.5rem;
-}
+  /* Snapshot Grid: Reposition to 2x2 layout */
+  .snapshot-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+    margin-top: 1.5rem;
+  }
 
-.snapshot-bubble {
-padding: 1rem 0.75rem;
-}
+  .snapshot-bubble {
+    padding: 1rem 0.75rem;
+  }
 
-.snapshot-bubble span {
-font-size: 1.85rem;
-}
+  .snapshot-bubble span {
+    font-size: 1.85rem;
+  }
 
-.snapshot-bubble p {
-font-size: 0.75rem;
-}
+  .snapshot-bubble p {
+    font-size: 0.75rem;
+  }
 
-/* Metadata Container */
-.meta-container {
-padding: 1rem;
-}
+  /* Metadata Container */
+  .meta-container {
+    padding: 1rem;
+  }
 
-.meta-row {
-flex-direction: column;
-align-items: flex-start;
-gap: 0.25rem;
-padding: 0.75rem 0;
-}
+  .meta-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    padding: 0.75rem 0;
+  }
 
-.meta-row span {
-width: auto;
-font-size: 0.8rem;
-text-transform: uppercase;
-letter-spacing: 0.05em;
-}
+  .meta-row span {
+    width: auto;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
 
-/* Research Grid: Transition 5 cards to a vertical stack */
-.research-grid {
-grid-template-columns: 1fr;
-gap: 0.75rem;
-}
+  /* Research Grid: Transition 5 cards to a vertical stack */
+  .research-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
 
-.research-card {
-padding: 1.15rem;
-}
+  .research-card {
+    padding: 1.15rem;
+  }
 
+  /* --- FIX: CONTENEDORES RESPONSIVOS LUMINOSOS --- */
+  .flow-diagram,
+  .tree-container,
+  .architecture-system {
+    position: relative;
+    overflow: auto !important;
+    max-width: 100%;
+    border: 1px solid #e5e7eb; /* Restaurado a gris claro */
+    border-radius: 8px;
+    background: #fafafa; /* Restaurado a fondo claro nativo */
+    padding: 1.25rem;
+    cursor: grab;
+    -webkit-overflow-scrolling: touch; 
+  }
 
-.flow-diagram,
-.tree-container,
-.architecture-system {
-position: relative;
-overflow: auto !important;
-max-width: 100%;
-border: 1px solid #2e3035;
-border-radius: 8px;
-background: #0d0e11;
-padding: 1.25rem;
-cursor: grab;
--webkit-overflow-scrolling: touch; 
-}
+  .flow-diagram:active,
+  .tree-container:active,
+  .architecture-system:active {
+    cursor: grabbing;
+  }
 
+  .tree {
+    min-width: 680px; 
+    padding-bottom: 0.5rem;
+    background: transparent !important;
+  }
 
-.flow-diagram:active,
-.tree-container:active,
-.architecture-system:active {
-cursor: grabbing;
-}
+  .flow-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
 
-.tree {
-min-width: 680px; 
-padding-bottom: 0.5rem;
-}
+  .flow-diagram .node {
+    font-size: 0.85rem;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+    white-space: nowrap;
+  }
 
+  /* --- FIX: PREVENIR APILADO EN BLOQUES ESPECÍFICOS --- */
+  .flow-branches {
+    display: flex !important;
+    flex-direction: row !important; /* Mantiene Reviews + Location Info alineados horizontalmente */
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    width: max-content !important; /* Fuerza el desborde para habilitar el scroll táctil */
+  }
 
-.flow-diagram {
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 0.5rem;
-}
+  /* Systems architecture dynamic container */
+  .architecture-system {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    min-width: 320px;
+  }
 
-.flow-diagram .node {
-font-size: 0.85rem;
-padding: 0.75rem 1rem;
-width: 100%;
-max-width: 280px;
-text-align: center;
-white-space: nowrap;
-}
+  .architecture-branches {
+    display: flex !important;
+    flex-direction: row !important; /* Mantiene Attribution, UX, CRM Continuity alineados horizontalmente */
+    flex-wrap: nowrap !important;
+    gap: 2rem !important;
+    width: max-content !important; /* Fuerza el desborde para habilitar el scroll táctil */
+    align-items: center !important;
+  }
 
-.flow-branches {
-flex-direction: column;
-width: 100%;
-align-items: center;
-gap: 0.5rem;
-}
+  .architecture-feature {
+    width: 160px !important;
+    text-align: center;
+  }
 
-/* Systems architecture dynamic container */
-.architecture-system {
-display: flex;
-flex-direction: column;
-align-items: center;
-min-width: 320px;
-}
+  /* Custom subtle scrollbar styling to avoid native desktop scroll bars on mobile */
+  .flow-diagram::-webkit-scrollbar,
+  .tree-container::-webkit-scrollbar,
+  .architecture-system::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
+  }
 
-.architecture-branches {
-flex-direction: column;
-gap: 0.75rem;
-width: 100%;
-align-items: center;
-}
+  .flow-diagram::-webkit-scrollbar-thumb,
+  .tree-container::-webkit-scrollbar-thumb,
+  .architecture-system::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 10px;
+  }
 
-.architecture-feature {
-width: 100%;
-max-width: 240px;
-text-align: center;
-}
+  /* FIGCAPTION, IMAGES & NAVIGATION */
+  .screenshot-frame {
+    margin: 1.5rem 0;
+    padding: 0.5rem;
+  }
 
-/* Custom subtle scrollbar styling to avoid native desktop scroll bars on mobile */
-.flow-diagram::-webkit-scrollbar,
-.tree-container::-webkit-scrollbar,
-.architecture-system::-webkit-scrollbar {
-height: 5px;
-width: 5px;
-}
+    /* 1. Forzamos a los contenedores y sliders a usar proporción panorámica */
+  .clex-image-wrapper,
+  .screenshot-frame:not(.vertical-frame),
+  .screenshot-frame:not(.fixed-aspect-frame):not(.vertical-frame),
+  .screenshot-frame.fixed-aspect-frame .aspect-container {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important; /* Eliminamos el empuje vertical mínimo anterior */
+    aspect-ratio: 16 / 10 !important; /* Proporción premium de visor web */
+    overflow: hidden !important;
+    background-color: #f3f4f6 !important;
+    position: relative !important;
+  }
 
-.flow-diagram::-webkit-scrollbar-thumb,
-.tree-container::-webkit-scrollbar-thumb,
-.architecture-system::-webkit-scrollbar-thumb {
-background: #2e3035;
-border-radius: 10px;
-}
+  /* 2. Escalamos la imagen interna para que se comporte como un visor de navegador */
+  .clex-image-wrapper img,
+  .screenshot-frame:not(.vertical-frame) img,
+  .clickable-screenshot,
+  .carousel-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; /* Cubre el área sin deformar la imagen original */
+    object-position: top center !important; /* Mantiene visible la barra de navegación del sitio web */
+  }
 
-/*
-==========================================================================
-FIGCAPTION, IMAGES & NAVIGATION
-==========================================================================
-*/
+  /* Ajustamos las cajas vacías o fallbacks para que hereden la proporción limpia */
+  .clex-carousel-fallback {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 1rem !important;
+  }
 
-.screenshot-frame {
-margin: 1.5rem 0;
-padding: 0.5rem;
-}
+  figcaption {
+    font-size: 0.8rem;
+    line-height: 1.45;
+    margin-top: 0.75rem;
+  }
 
-figcaption {
-font-size: 0.8rem;
-line-height: 1.45;
-margin-top: 0.75rem;
-}
+  .zoom-hint {
+    display: inline-block;
+    color: #602160; /* Prominent active link color for accessibility */
+    font-weight: 500;
+  }
 
-.zoom-hint {
-display: inline-block;
-color: #602160; /* Prominent active link color for accessibility */
-font-weight: 500;
-}
+  /* Code Block configuration */
+  .code-block {
+    padding: 1rem;
+    overflow-x: auto;
+    font-size: 0.75rem;
+    border-radius: 6px;
+  }
 
-/* Code Block configuration */
-.code-block {
-padding: 1rem;
-overflow-x: auto;
-font-size: 0.75rem;
-border-radius: 6px;
-}
+  .code-caption {
+    font-size: 0.8rem !important;
+    margin-bottom: 2rem !important;
+  }
 
-.code-caption {
-font-size: 0.8rem !important;
-margin-bottom: 2rem !important;
-}
+  /* Footer and case study navigation */
+  .case-navigation {
+    flex-direction: column-reverse;
+    gap: 1.25rem;
+  }
 
-/* Footer and case study navigation */
-.case-navigation {
-flex-direction: column-reverse;
-gap: 1.25rem;
-}
+  .next-case-card {
+    padding: 1.25rem;
+  }
 
-.next-case-card {
-padding: 1.25rem;
-}
-
-.nav-button {
-width: 100%;
-text-align: center;
-justify-content: center;
+  .nav-button {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
 }
 
 /* ==========================================================================
-PROJECT META - RESPONSIVE GRID ALIGNMENT FIX
-========================================================================== */
-
+   PROJECT META - RESPONSIVE GRID ALIGNMENT FIX
+   ========================================================================== */
 /* 1. Comportamiento base (Escritorio / Tablet grande) */
 .project-meta {
-width: 100%;
-margin: 2.5rem 0;
-border-top: 1px solid #e5e7eb;
-border-bottom: 1px solid #e5e7eb;
-padding: 1.5rem 0;
+  width: 100%;
+  margin: 2.5rem 0;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 1.5rem 0;
 }
 
 .meta-container {
-display: flex;
-flex-direction: column;
-gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .meta-row {
-display: grid;
-grid-template-columns: 200px 1fr; /* Estructura de dos columnas perfectamente alineadas */
-gap: 1.5rem;
-align-items: baseline;
+  display: grid;
+  grid-template-columns: 200px 1fr; /* Estructura de dos columnas perfectamente alineadas */
+  gap: 1.5rem;
+  align-items: baseline;
 }
 
 .meta-row span {
-font-weight: 600;
-color: #4b5563; /* Gris intermedio para las etiquetas */
-font-size: 0.9rem;
-text-transform: uppercase;
-letter-spacing: 0.05em;
+  font-weight: 600;
+  color: #4b5563; /* Gris intermedio para las etiquetas */
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .meta-row p {
-margin: 0;
-color: #1f2937; /* Gris oscuro para el valor */
-font-size: 0.95rem;
-line-height: 1.5;
+  margin: 0;
+  color: #1f2937; /* Gris oscuro para el valor */
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
-/* 2. Ajuste estricto para dispositivos móviles (Breakpoint de 768px) */
+/* ==========================================================================
+   ESTILOS ISOLADOS PARA EL TIMELINE Y TABLA DE RESULTADOS (Protegidos)
+   ========================================================================== */
+/* --- 1. TABLA DE METADATOS / TIMELINE (SUPERIOR) --- */
+.clex-project-meta {
+  border-top: 1px solid #e5e7eb !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  padding: 1.5rem 0 !important;
+  margin: 2.5rem 0 !important;
+  width: 100% !important;
+  display: block !important;
+}
+
+.clex-meta-container {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+  width: 100% !important;
+}
+
+.clex-meta-row {
+  display: grid !important;
+  grid-template-columns: 180px 1fr !important; /* Alineación perfecta en columnas */
+  align-items: baseline !important;
+  padding: 0.85rem 0 !important;
+  border-bottom: 1px solid #f3f4f6 !important;
+  margin: 0 !important;
+  gap: 1.5rem !important;
+  width: 100% !important;
+}
+
+.clex-meta-row:last-child {
+  border-bottom: none !important;
+}
+
+.clex-meta-label {
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  color: #4b5563 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.2 !important;
+}
+
+.clex-meta-value {
+  margin: 0 !important;
+  font-size: 0.95rem !important;
+  color: #1f2937 !important;
+  line-height: 1.45 !important;
+  padding: 0 !important;
+}
+
+/* --- 2. TABLA DE RESULTADOS DEL LANZAMIENTO (INFERIOR) --- */
+.clex-results-section {
+  margin: 3.5rem 0 !important;
+}
+
+.clex-results-table-wrapper {
+  border: 1px solid #e5e7eb !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  background-color: #ffffff !important;
+  margin: 2rem 0 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+}
+
+.clex-results-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  text-align: left !important;
+  font-size: 0.95rem !important;
+}
+
+.clex-results-table th,
+.clex-results-table td {
+  padding: 1rem 1.5rem !important;
+  border-bottom: 1px solid #e5e7eb !important;
+}
+
+.clex-results-table th {
+  background-color: #f9fafb !important;
+  font-weight: 700 !important;
+  color: #374151 !important;
+  text-transform: uppercase !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.05em !important;
+}
+
+.clex-results-table tr:last-child td {
+  border-bottom: none !important;
+}
+
+.clex-results-table td {
+  color: #111827 !important;
+}
+
+.clex-results-table tr td:first-child {
+  font-weight: 600 !important;
+  color: #374151 !important;
+}
+
+.clex-results-blockquote {
+  border-left: 4px solid #33183a !important;
+  padding-left: 1.5rem !important;
+  margin: 2rem 0 !important;
+  color: #4b5563 !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+}
+
+/* Ajustes responsivos para móviles */
 @media (max-width: 768px) {
-.project-meta {
-margin: 1.5rem 0 !important;
-padding: 1rem 0 !important;
-}
+  .project-meta {
+    margin: 1.5rem 0 !important;
+    padding: 1rem 0 !important;
+  }
 
-.meta-container {
-display: flex !important;
-flex-direction: column !important;
-gap: 1.25rem !important;
-}
+  .meta-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.25rem !important;
+  }
 
-.meta-row {
-display: flex !important;
-flex-direction: column !important; /* Apila etiqueta y valor en una sola columna */
-gap: 0.25rem !important;
-align-items: flex-start !important;
-}
+  .meta-row {
+    display: flex !important;
+    flex-direction: column !important; /* Apila etiqueta y valor en una sola columna */
+    gap: 0.25rem !important;
+    align-items: flex-start !important;
+  }
 
-.meta-row span {
-font-size: 0.8rem !important;
-}
+  .meta-row span {
+    font-size: 0.8rem !important;
+  }
 
-.meta-row p {
-font-size: 0.9rem !important;
-}
-}
+  .meta-row p {
+    font-size: 0.9rem !important;
+  }
 
+  .clex-meta-row {
+    grid-template-columns: 1fr !important;
+    gap: 0.25rem !important;
+    padding: 0.5rem 0 !important;
+  }
+  
+  .clex-results-table th,
+  .clex-results-table td {
+    padding: 0.75rem 1rem !important;
+    font-size: 0.85rem !important;
+  }
+}
 
 @media (max-width: 480px) {
-.snapshot-grid {
-grid-template-columns: 1fr; 
-}
+  .snapshot-grid {
+    grid-template-columns: 1fr; 
+  }
 
-.findings-list li {
-font-size: 0.85rem;
-line-height: 1.4;
-margin-bottom: 0.75rem;
+  .findings-list li {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+  }
 }
-}
-

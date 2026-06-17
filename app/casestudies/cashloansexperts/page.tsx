@@ -92,7 +92,9 @@ export default function CashloanExperts() {
               <li><a href="#research" className={activeId === "research" ? "active" : ""}>Research & Discovery</a></li>
               <li><a href="#solution" className={activeId === "solution" ? "active" : ""}>The Solution</a></li>
               <li><a href="#architecture" className={activeId === "architecture" ? "active" : ""}>Technical Architecture</a></li>
+              <li><a href="#results" className={activeId === "results" ? "active" : ""}>Early Launch Results</a></li>
               <li><a href="#lessons" className={activeId === "lessons" ? "active" : ""}>Lessons Learned</a></li>
+              
             </ul>
           </nav>
         </aside>
@@ -110,12 +112,12 @@ export default function CashloanExperts() {
  
   <div className="snapshot-bubble">
     <span>90+</span>
-    <p>Partner Locations</p>
+    <p>Landing Pages</p>
   </div>
 
   <div className="snapshot-bubble">
-    <span>90+</span>
-    <p>Landing Pages</p>
+    <span>12.5%</span>
+    <p>Conversion Rate</p>
   </div>
 
   <div className="snapshot-bubble">
@@ -124,43 +126,42 @@ export default function CashloanExperts() {
   </div>
 
   <div className="snapshot-bubble">
-    <span>2</span>
-    <p>Application Stages</p>
+    <span>128%</span>
+    <p>Engagement Boost</p>
   </div>
 </section>
 </section>
 
-  <section className="project-meta">
+   <section className="clex-project-meta">
+      <div className="clex-meta-container">
+        <div className="clex-meta-row">
+          <span className="clex-meta-label">Role</span>
+          <p className="clex-meta-value">Marketing Operations Specialist</p>
+        </div>
 
-<div className="meta-container">
-  <div className="meta-row">
-    <span>Role</span>
-    <p>Marketing Operations Specialist</p>
-  </div>
+        <div className="clex-meta-row">
+          <span className="clex-meta-label">Timeline</span>
+          <p className="clex-meta-value">June 2026 – Present</p>
+        </div>
 
-  <div className="meta-row">
-    <span>Timeline</span>
-    <p>2025 – Present</p>
-  </div>
+        <div className="clex-meta-row">
+          <span className="clex-meta-label">Status</span>
+          <p className="clex-meta-value">Live</p>
+        </div>
 
-  <div className="meta-row">
-    <span>Status</span>
-    <p>Live</p>
-  </div>
+        <div className="clex-meta-row">
+          <span className="clex-meta-label">Stack</span>
+          <p className="clex-meta-value">Next.js · TypeScript · Zoho Forms · Zoho CRM</p>
+        </div>
 
-  <div className="meta-row">
-    <span>Stack</span>
-    <p>Next.js · TypeScript · Zoho Forms · Zoho CRM</p>
-  </div>
-
-  <div className="meta-row">
-    <span>Responsibilities</span>
-    <p>
-      Research · UX Design · Development · Attribution Architecture · CRM Integration
-    </p>
-  </div>
-</div>
-</section>
+        <div className="clex-meta-row">
+          <span className="clex-meta-label">Responsibilities</span>
+          <p className="clex-meta-value">
+            Research · UX Design · Development · Attribution Architecture · CRM Integration
+          </p>
+        </div>
+      </div>
+    </section>
 
 
 <h2 id="overview">Overview</h2>
@@ -242,10 +243,10 @@ export default function CashloanExperts() {
             making it difficult to measure partner performance and understand where applicants 
             originated.</p>
 
-          <figure className="screenshot-frame" onClick={() => openModal("/images/gbp_channels.png", "Example of a GBP that could only be identified by phone number only", 800, 450)}>
+          <figure className="screenshot-frame" onClick={() => openModal("/images/gbp_channels.png", "Google Business Profile tracking limited strictly to unique phone-based attribution", 800, 450)}>
   <Image 
     src="/images/gbp_channels.png" 
-    alt="Example of a GBP that could only be identified by phone number only"
+    alt="Google Business Profile tracking limited strictly to unique phone-based attribution"
     width={800}
     height={450}
     priority
@@ -662,16 +663,104 @@ export default function CashloanExperts() {
 
 </div>
 
-          <ul>
-            <li>Frontend: Next.js + TypeScript</li>
-            <li>Form Processing: Zoho Forms</li>
-            <li>CRM: Zoho CRM</li>
-            <li>Data Persistence: Browser Local Storage</li>
-            <li>Partner Management: Centralized partnerdata.ts structure</li>
-            <li>Routing: Dynamic URL-based partner pages</li>
-            <li>Attribution: URL parameters and location-based logic</li>
-          </ul>
+           <div className="clex-results-table-wrapper" style={{ marginTop: "2rem" }}>
+    <table className="clex-results-table">
+      <thead>
+        <tr>
+          <th>System Layer</th>
+          <th>Technology Stack</th>
+          <th>Operational Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Frontend Core</td>
+          <td>Next.js + TypeScript</td>
+          <td>Delivers fast, dynamic, and type-safe localized rendering of landing pages.</td>
+        </tr>
+        <tr>
+          <td>Form Processing</td>
+          <td>Zoho Forms</td>
+          <td>Ingests multi-stage applicant data through secured embed frameworks.</td>
+        </tr>
+        <tr>
+          <td>Central CRM Database</td>
+          <td>Zoho CRM</td>
+          <td>Stores unified customer lifecycles and tracks historical pipeline conversions.</td>
+        </tr>
+        <tr>
+          <td>Session Persistence</td>
+          <td>Browser LocalStorage</td>
+          <td>Caches applicant metadata client-side to prevent redundant manual typing.</td>
+        </tr>
+        <tr>
+          <td>Partner Registry</td>
+          <td>partnerData.ts Schema</td>
+          <td>Acts as a single centralized JSON repository to scale localization assets dynamically.</td>
+        </tr>
+        <tr>
+          <td>Dynamic Routing</td>
+          <td>Slug-based URL Paths</td>
+          <td>Generates SEO-ready partner endpoints on-the-fly and maps dynamic XML sitemaps.</td>
+        </tr>
+        <tr>
+          <td>Attribution Engine</td>
+          <td>Client-side Telemetry</td>
+          <td>Resolves acquisition sources (GCLID, UTMs, GMB, Organic) under strict priority rules.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
+
+<section id="results" className="clex-results-section">
+      <h2>Early Launch Results</h2>
+      <p>
+        To evaluate the direct performance impact of the newly deployed dynamic platform, 
+        we tracked baseline vs. live metrics during the first week following the relaunch.
+      </p>
+      
+      <div className="clex-results-table-wrapper">
+        <table className="clex-results-table">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Before</th>
+              <th>After</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Conversion Rate</td>
+              <td>7.9%</td>
+              <td>12.5%</td>
+            </tr>
+            <tr>
+              <td>Engagement Rate</td>
+              <td>Baseline</td>
+              <td>+128%</td>
+            </tr>
+            <tr>
+              <td>Avg. Engagement Time</td>
+              <td>21s</td>
+              <td>48s</td>
+            </tr>
+            <tr>
+              <td>Step 2 Completion</td>
+              <td>N/A</td>
+              <td>71%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div className="clex-results-blockquote">
+        While the sample size was still limited during the first week after launch, the results 
+        showed <b>a clear improvement in engagement and conversion trends.</b> These early indicators 
+        were strong enough to support a recommendation to <b>begin allocating paid media budget</b> to 
+        the new experience.
+      </div>
+    </section>
 
 <section id="lessons">      
           <h2>Lessons Learned</h2>
