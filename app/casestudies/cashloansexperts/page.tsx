@@ -443,7 +443,7 @@ export default function CashloanExperts() {
   }
 };`}</code>
 </pre>
-<div className="code-caption" style={{ fontSize: '0.9rem', color: '#444850', marginTop: '0.25rem', marginBottom: '3rem' }}>
+ <div className="clex-results-blockquote">
   <strong>Code Schema 1. Centralized Partner Schema.</strong> Snippet from <code>partnerData.ts</code>. Instead of deploying 468 separate assets, new partner onboarding is reduced to appending a key-value object that controls the entire layout and tracking architecture programmatically.
 </div>
 

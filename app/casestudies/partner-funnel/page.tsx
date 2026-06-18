@@ -32,10 +32,10 @@ export default function RetailPartnerFunnel() {
       "snapshot",
       "overview",
       "problem",
-      "research",
+      "design",
       "solution",
       "architecture",
-      "results",
+      "operational",
       "lessons"
     ];
     
@@ -83,10 +83,10 @@ export default function RetailPartnerFunnel() {
               <li><a href="#snapshot" className={activeId === "snapshot" ? "active" : ""}>Snapshot</a></li>
               <li><a href="#overview" className={activeId === "overview" ? "active" : ""}>Overview</a></li>
               <li><a href="#problem" className={activeId === "problem" ? "active" : ""}>The Problem</a></li>
-              <li><a href="#research" className={activeId === "research" ? "active" : ""}>Research & Discovery</a></li>
+              <li><a href="#design" className={activeId === "design" ? "active" : ""}>Design Constraints</a></li>
               <li><a href="#solution" className={activeId === "solution" ? "active" : ""}>The Solution</a></li>
               <li><a href="#architecture" className={activeId === "architecture" ? "active" : ""}>Technical Architecture</a></li>
-              <li><a href="#results" className={activeId === "results" ? "active" : ""}>Results</a></li>
+              <li><a href="#operational" className={activeId === "operational" ? "active" : ""}>Operational Impact</a></li>
               <li><a href="#lessons" className={activeId === "lessons" ? "active" : ""}>Lessons Learned</a></li>
             </ul>
           </nav>
@@ -125,25 +125,25 @@ export default function RetailPartnerFunnel() {
           </section>
 
           {/* PROJECT METADATA */}
-          <section className="project-meta">
-            <div className="meta-container">
-              <div className="meta-row">
-                <span>Role</span>
-                <p>Frontend Engineer · Growth Systems</p>
-              </div>
-              <div className="meta-row">
-                <span>Deployed:</span>
-                <p>April 2026</p>
-              </div>
-              <div className="meta-row">
-                <span>Cycle:</span>
-                <p>2-week rollout</p>
-              </div>
-              <div className="meta-row">
-                <span>Stack</span>
-                <p>HTML5 · CSS3 · Vanilla JS · URLSearchParams · Zoho Forms · GA4</p>
-              </div>
-            </div>
+
+          <section className="clex-project-meta">
+      <div className="clex-meta-container">
+        <div className="clex-meta-row">
+          <span className="clex-meta-label">Role</span>
+          <p className="clex-meta-value">Frontend Engineer · Growth Systems</p>
+        </div>
+        <div className="clex-meta-row">
+          <span className="clex-meta-label">Deployed:</span>
+          <p className="clex-meta-value">April 2026</p>
+        </div>
+              <div className="clex-meta-row">
+          <span className="clex-meta-label">Cycle:</span>
+          <p className="clex-meta-value">2-week rollout</p>
+        </div>   
+        <div className="clex-meta-row">
+          <span className="clex-meta-label">Stack</span>
+          <p className="clex-meta-value">HTML5 · CSS3 · Vanilla JS · URLSearchParams · Zoho Forms · GA4</p>
+        </div>     </div> 
           </section>
 
           {/* 2. OVERVIEW */}
@@ -153,40 +153,103 @@ export default function RetailPartnerFunnel() {
             <p>
               This case study documents the design and implementation of a multi-location 
               acquisition and attribution system built for a financial services retail network. 
-              Certain branding, naming, and identifying details have been anonymized for 
-              confidentiality.
+              <i> Certain branding, naming, and identifying details have been anonymized for 
+              confidentiality.</i>
             </p>
 
-              <p>The project began as an initiative to modernize and centralize the credit application 
-                flow across multiple retail partner locations. Each storefront previously operated with 
+            <MiniCarousel 
+  images={[
+    { 
+      src: "/images/scan.png", 
+      alt: "Fig. 1. QR Entry Point. Customers begin the application by scanning a QR code displayed at a partner retail location, allowing each session to inherit its originating location automatically.",
+      fullWidth: 1440,  
+      fullHeight: 2800  
+    },
+    { 
+      src: "/images/application.png", 
+      alt: "Fig. 2. Mobile Application Experience. The landing page presents a lightweight, mobile-first interface that progressively loads the application after the user chooses to begin.",
+      fullWidth: 1200,
+      fullHeight: 1800 
+    },
+    { 
+      src: "/images/CRM.png", 
+      alt: "Fig. 3. CRM Attribution. Completed applications are synchronized directly into Zoho CRM with partner and location metadata already attached, eliminating manual source assignment.",
+      fullWidth: 1200,
+      fullHeight: 1800 
+    },
+  ]} 
+  onImageClick={openModal}
+/>
+
+              <p>The project began as an initiative to <b>modernize and centralize the credit application 
+                flow across multiple retail partner locations.</b> Each storefront previously operated with 
                 isolated application forms, resulting in fragmented data collection and inconsistent 
                 attribution.</p>
 
-                 <p>The goal was to replace this fragmented structure with a unified digital entry point that 
+                 <p>The goal was to <b>replace this fragmented structure with a unified digital entry point</b> that 
                 could correctly identify the originating partner and location at the moment of application. </p>
 
             <h3>System Flow</h3>
             <p>
               Customers initiated the application process by scanning a QR code displayed at participating 
-              retail locations. Each QR encoded a unique combination of partner and location identifiers, 
+              retail locations. <b>Each QR encoded a unique combination of partner and location identifiers,</b> 
               allowing every visit to carry its origin from the very first interaction.</p>
+
+              <div className="flow-diagram">
+
+  <div className="node">Customer</div>
+
+  <div className="arrow">↓</div>
+
+  <div className="node">Scans QR</div>
+
+  <div className="arrow">↓</div>
+
+  <div className="node">Application</div>
+
+  <div className="arrow">↓</div>
+ 
+    <div className="node">
+      Lead reaches CRM
+    </div>
+
+</div>
 
             <p>Upon arrival, a lightweight landing page extracted these parameters and dynamically injected 
               them into the embedded application before submission. This allowed every completed application 
-              to be automatically associated with the correct retail partner and physical location without 
+              to be <b>automatically associated with the correct retail partner and physical location</b> without 
               requiring manual selection or intervention.
             </p>
 
-            <p>Beyond simplifying the customer experience, this architecture established a reliable 
-              attribution layer while preserving the existing Zoho Forms to CRM integration, minimizing 
+            <p>Beyond simplifying the customer experience, <b>this architecture established a reliable 
+              attribution layer</b> while preserving the existing Zoho Forms to CRM integration, minimizing 
               implementation effort and accelerating deployment.</p>
 
             <h3>Design Legacy</h3>
+
+             <MiniCarousel 
+  images={[
+    { 
+      src: "/images/formslegacy.png", 
+      alt: "Fig. 4. Legacy Form Architecture. Supporting a growing retail network required maintaining separate forms for each location, making updates repetitive, error-prone, and difficult to scale.",
+      fullWidth: 1440,  
+      fullHeight: 2800  
+    },
+    { 
+      src: "/images/formslegacy2.png", 
+      alt: "Fig. 5. Single-Location Application Flow. A typical legacy application page tied to a single storefront. Expanding this model to dozens of locations would have required creating and maintaining dozens of nearly identical copies.",
+      fullWidth: 1200,
+      fullHeight: 1800 
+    },
+  ]} 
+  onImageClick={openModal}
+/>
+
             <p>
               While initially scoped as a standalone implementation for a single sub-brand, this project 
-              introduced reusable patterns in attribution modeling, routing logic, and lightweight frontend 
-              architecture that continued to inform subsequent acquisition systems. These ideas were later 
-              refined and expanded in projects such as CLEX <a href="/casestudies/cashloansexperts" target="_blank">(see case study).</a>
+              introduced <b>reusable patterns in attribution modeling, routing logic, and lightweight frontend 
+              architecture</b> that continued to inform subsequent acquisition systems. These ideas were later 
+              refined and expanded in projects such as CLEX <a href="/casestudies/cashloansexperts" target="_blank"><b>(see case study).</b></a>
             </p> 
           </section>
 
@@ -200,53 +263,53 @@ export default function RetailPartnerFunnel() {
               partner, making the origin of every lead easy to identify.
             </p>
             <p>
-              That model stopped scaling when a new retail partner joined with more than 70 
-              physical locations. A single partner was no longer enough to identify where an application 
+              That model stopped scaling when a new retail partner joined with <b>more than 70 
+              physical locations.</b> A single partner was no longer enough to identify where an application 
               originated, yet creating and maintaining a separate form for every store would dramatically 
               increase operational complexity.
             </p>
 
             <p>The challenge was no longer simply collecting applications. The system now needed to 
-              distinguish individual retail locations while remaining maintainable as the network 
-              continued to grow.</p>
+              distinguish individual retail locations while <b>remaining maintainable as the network 
+              continued to grow.</b></p>
 
            <pre className="code-block">
-  <code>{`const routes = {
-  anh: { location: "Anaheim" },
-  bak: { location: "Bakersfield" },
-  riv: { location: "Riverside" },
-};
+  <code>{`    "anh": {
+      partner: "auto-international-insurance-agency",
+      location: "Anaheim",
+    },
 
-const route = routes[path];
+    "apv": {
+      partner: "auto-international-insurance-agency",
+      location: "Apple Valley",
+    },
 
-window.location.replace(
-  \`/?partner=\${route.partner}&location=\${route.location}\`
-);`}</code>
+     "bak": {
+      partner: "auto-international-insurance-agency",
+      location: "Bakersfield",
+    },
+
+     "bfl": {
+      partner: "auto-international-insurance-agency",
+      location: "Bakersfield 2",
+    },
+`}</code>
 </pre>
 
 
-<div className="code-caption" style={{ fontSize: '0.9rem', color: '#444850', marginTop: '0.25rem', marginBottom: '3rem' }}>
-  <strong>Instead of inventing a new internal identifier system, route aliases mirrored the retail 
+<div className="clex-results-blockquote">
+  Instead of inventing a new internal identifier system, route aliases mirrored the retail 
     partner's existing location codes. This reduced onboarding friction and made operational support 
-    significantly easier for both technical and business teams.</strong>
+    significantly easier for both technical and business teams.
 </div>
-
-
-            <MiniCarousel 
-              images={[
-                { src: "/images/legacy_static_forms.png", alt: "Analysis of fragmented static form architectures" },
-                { src: "/images/maintenance_overhead.png", alt: "Console tracking showing manual editing complexity across cloned profiles" }
-              ]} 
-              onImageClick={openModal} 
-            />
           </section>
 
           {/* 4. RESEARCH & DISCOVERY */}
-          <section id="research">
+          <section id="design">
             <h2>Design Constraints</h2>
             <p>
-              Rather than replacing the existing application pipeline, the objective was to 
-              extend it with minimal disruption. The solution needed to preserve the existing 
+              Rather than replacing the existing application pipeline, <b>the objective was to 
+              extend it with minimal disruption.</b> The solution needed to preserve the existing 
               Zoho Forms to CRM integration while introducing reliable partner and location 
               attribution across a growing retail network.
             </p>
@@ -270,35 +333,99 @@ window.location.replace(
             <p>
               These constraints shifted the problem away from rebuilding the application itself. 
               Instead, the focus became designing a lightweight routing and attribution layer 
-              capable of integrating seamlessly with the existing acquisition workflow.
+              capable of <b>integrating seamlessly with the existing acquisition workflow.</b>
             </p>
           </section>
 
           {/* 5. THE SOLUTION */}
           <section id="solution">
             <h2>The Solution</h2>
-            <h3>The Custom Vanilla JS Frame Overlay</h3>
+            <h3>A Lightweight Architecture</h3>
             <p>
-              To validate the business channel viability immediately without investing resources into a complex custom backend overhaul, a native Zoho Forms iframe was utilized. The interface was visually transformed through an HTML5 and CSS3 Custom Cover Overlay framework.
+              Rather than replacing the existing application infrastructure, <b>the solution introduced a 
+              lightweight layer around it.</b> This approach preserved the native Zoho Forms to CRM integration 
+              while adding routing, attribution, and analytics without requiring backend development.
             </p>
-            <h3>Telemetry Injection Engine</h3>
+            <h3>Dynamic Attribution</h3>
             <p>
-              A lightweight parameter processor script was engineered using Vanilla JS and the native <code>URLSearchParams</code> API. Upon page mounting, the logic extracted the tracking credentials (<code>p_id</code> and <code>l_id</code>) embedded within the storefront QR code query strings, dynamically injecting this metadata into hidden iframe parameters before clearing out the user-facing loader element.
+              Partner and location information was carried through URL parameters generated by the routing 
+              layer. Upon loading the application, these values were automatically injected into the embedded 
+              form, <b>allowing every submission to retain its originating retail context.</b>
             </p>
-            <pre className="code-block">
-              <code>{`// Dynamic tracking validation mapping
-const urlParams = new URLSearchParams(window.location.search);
-const partnerId = urlParams.get('p_id');
-const locationId = urlParams.get('l_id');
+           <pre className="code-block">
+  <code>{`
+  const routes = {
+    "wgt": {
+      partner: "auto-international-insurance-agency",
+      location: "Wilmington",
+    },
+  }; 
 
-if (partnerId && locationId) {
-  const iframe = document.getElementById('zoho-form-iframe');
-  iframe.src += \`?PartnerID=\${partnerId}&LocationID=\${locationId}\`;
-}`}</code>
-            </pre>
-            <h3>Behavioral Funnel Events</h3>
+  const path = window.location.pathname.replace("/r/", "").toLowerCase();
+
+  const route = routes[path];
+
+  if (route) {
+    const url = \`/?partner=\${route.partner}&location=\${encodeURIComponent(route.location)}\`;
+    window.location.replace(url);
+  } else {
+    window.location.replace("/");
+  }
+  `}</code>
+</pre>
+
+<div className="clex-results-blockquote">
+Example of the routing layer. A lightweight mapping object resolved each location code 
+into the corresponding partner metadata, <b>allowing a single application experience 
+to support every retail location.</b></div>
+
+            <h3>Progressive Application Experience</h3>
             <p>
-              Custom event listeners were wired into the presentation layer to broadcast critical funnel touchpoints directly to Google Analytics 4. Mapping <code>application_start</code>, <code>generate_lead</code>, and final <code>form_submit</code> data allowed the growth team to chart live in-store acquisition drop-offs for the first time.
+              Instead of loading the application immediately, the interface presented a lightweight 
+              introductory layer. Selecting "Start Application" recorded the beginning of the funnel 
+              before dynamically loading the embedded form, <b>improving perceived performance while enabling
+              more accurate behavioral measurement.</b>
+            </p>
+
+            <figure className="screenshot-frame" onClick={() => openModal("/images/startapp.png", "Google Business Profile tracking limited strictly to unique phone-based attribution", 800, 450)}>
+              <Image 
+                src="/images/startapp.png" 
+                alt="Progressive Form Loading"
+                width={800}
+                height={450}
+                priority
+                className="clickable-screenshot"
+              />
+              <figcaption>
+  <strong>Fig. 4. Progressive Form Loading.</strong> Rather than displaying the application immediately, the landing experience introduced a lightweight entry state. The application was loaded only after the customer explicitly chose to begin, creating a clearer call to action while enabling the first measurable funnel event (<code>application_start</code>) before the form was rendered. <span className="zoom-hint">(Click to expand)</span>
+</figcaption>
+            </figure>
+
+            <h3>Analytics Integration</h3>
+            <p>
+              Key interactions were instrumented with custom GA4 events, providing visibility into 
+              application intent, progression, and completion. This transformed a previously opaque 
+              acquisition flow into <b>a measurable funnel </b>without modifying the underlying CRM integration.
+            </p>
+
+            <figure className="screenshot-frame" onClick={() => openModal("/images/analyticspartnerfunnel.png", "Google Business Profile tracking limited strictly to unique phone-based attribution", 800, 450)}>
+              <Image 
+                src="/images/analyticspartnerfunnel.png" 
+                alt="Screen showing Custom GA4 events"
+                width={800}
+                height={450}
+                priority
+                className="clickable-screenshot"
+              />
+              <figcaption>
+  <strong>Fig. 5. Custom Funnel Instrumentation.</strong> Custom GA4 events were introduced to measure the most important stages of the acquisition flow. <code>application_start</code> captured user intent, <code>generate_lead</code> confirmed successful submissions, and <code>phone_click</code> tracked an alternative conversion path, providing end-to-end visibility into customer behavior. <span className="zoom-hint">(Click to expand)</span>
+</figcaption>
+            </figure>
+
+            <p>
+              The objective was not to replace the existing platform, but to extend it through a lightweight 
+              frontend layer capable of solving attribution and routing while <b>preserving the existing backend 
+              workflow.</b>
             </p>
           </section>
 
@@ -306,7 +433,10 @@ if (partnerId && locationId) {
           <section id="architecture">
             <h2>Technical Architecture</h2>
             <p>
-              A lean frontend system designed for instantaneous page loads over retail cellular networks, ensuring data mapping synchronization downstream.
+              The solution was organized as a lightweight frontend architecture layered on top of 
+              the existing application pipeline. Each component introduced a single responsibility 
+              while <b>preserving the native synchronization between Zoho Forms, Zoho CRM, and Google 
+              Analytics.</b>
             </p>
 
             <div className="clex-results-table-wrapper" style={{ marginTop: "2rem" }}>
@@ -320,87 +450,148 @@ if (partnerId && locationId) {
                 <tbody>
                   <tr>
                     <td>QR Routing</td>
-                    <td>Identify originating retail location</td>
+                    <td>Resolve the originating retail location</td>
                   </tr>
                   <tr>
                     <td>Redirect Layer</td>
-                    <td>Resolve partner/location context</td>
+                    <td>Translate route identifiers into partner and location metadata</td>
                   </tr>
                   <tr>
                     <td>Landing Experience</td>
-                    <td>Present branded acquisition flow</td>
+                    <td>Present the acquisition flow and initialize the application</td>
                   </tr>
                   <tr>
                     <td>Dynamic Form Loader</td>
-                    <td>Inject attribution parameters</td>
+                    <td>Inject attribution parameters into the embedded form</td>
                   </tr>
                   <tr>
                     <td>Zoho Forms</td>
-                    <td>Capture customer application</td>
+                    <td>Collect applicant information</td>
                   </tr>
                   <tr>
                     <td>Zoho CRM</td>
-                    <td>Persist synchronized lead records</td>
+                    <td>Synchronize lead records through native integration</td>
                   </tr>
                   <tr>
                     <td>GA4</td>
-                    <td>Measure funnel progression</td>
+                    <td>Track funnel progression and behavioral events</td>
                   </tr>
                 </tbody>
               </table>
             </div>
+
+            <p>
+              This layered approach kept each component focused on a single responsibility, 
+              making the system <b>easier to maintain, extend, and scale</b> as additional retail 
+              partners were introduced.
+            </p>
+
+
           </section>
 
           {/* 7. RESULTS */}
-          <section id="results">
-            <h2>Results & Impact</h2>
+          <section id="operational">
+            <h2>Operational Impact</h2>
             <p>
-              Data validation recorded across active retail partner pilots demonstrated definitive improvements against historical acquisition baselines:
+              The project's success was measured by <b>operational improvements</b> rather than conversion uplift. 
+              The implementation consolidated a fragmented acquisition process into a scalable, measurable, 
+              and maintainable system <b>without disrupting the existing CRM workflow.</b>
             </p>
 
            <div className="clex-results-table-wrapper" style={{ marginTop: "2rem" }}>
     <table className="clex-results-table">
       <thead>
         <tr>
-                    <th>Performance Metric</th>
-                    <th>Legacy Framework</th>
-                    <th>Optimized Dynamic System</th>
+                    <th>Capability</th>
+                    <th>Previous Process</th>
+                    <th>New System</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Attribution Tracking</td>
-                    <td>Unmeasurable / Manual Entries</td>
-                    <td>100% Automated CRM Accuracy</td>
+                    <td>Attribution</td>
+                    <td>Manual / inconsistent</td>
+                    <td>Automated partner & location attribution</td>
                   </tr>
                   <tr>
-                    <td>Form Architecture</td>
-                    <td>71 Individual Static Clones</td>
-                    <td>1 Centralized Modular Base Form</td>
+                    <td>Form Management</td>
+                    <td>71 independent forms</td>
+                    <td>1 centralized dynamic form</td>
                   </tr>
                   <tr>
-                    <td>Engagement Metrics</td>
-                    <td>Fragmented Tracking Contexts</td>
-                    <td>160 Active Users / 138 Starts Captured</td>
+                    <td>Analytics</td>
+                    <td>Limited visibility</td>
+                    <td>Funnel-level event tracking</td>
+                  </tr>
+                  <tr>
+                    <td>Deployment</td>
+                    <td>Manual updates across multiple forms</td>
+                    <td>Single-point maintenance</td>
                   </tr>
                 </tbody>
               </table>
-            </div>
+</div>
+              <h3>Production Validation</h3>
+              
+              <div className="flow-diagram">
 
-            <div className="results-blockquote">
-              This functional validation prototype proved that dynamic query parameter injection is a highly reliable method for solving multi-location attribution tracking. It simplified operational overhead while establishing the programmatic foundation needed to design large-scale platform deployments.
-            </div>
+  {/* Las fuentes de origen distribuidas de forma horizontal en la parte superior */}
+  <div className="flow-branches">
+    
+    <div className="node">
+      GA4
+    </div>
+
+    <div className="node">
+      +
+    </div>
+
+    <div className="node">
+      CRM
+    </div>
+
+    <div className="node">
+      +
+    </div>
+
+    <div className="node">
+      Dynamic Route
+    </div>
+
+  </div>
+
+  <div className="arrow">↓</div>
+
+  {/* El nodo de destino final donde converge todo */}
+  <div className="node">
+    Location Attribution Matrix (71/71 matched)
+  </div>
+
+</div>
+
+              <p>
+              The implementation demonstrated that partner and location attribution could be 
+              handled dynamically without duplicating application forms, <b>establishing a scalable 
+              pattern for future multi-location acquisition projects.</b></p>
+     
           </section>
 
           {/* 8. LESSONS LEARNED */}
           <section id="lessons">
             <h2>Lessons Learned</h2>
             <p>
-              <b>Low-Cost Operational Validation:</b> This project demonstrated how targeted DOM manipulation and clean layout structures can resolve massive, distributed operational bottlenecks without requiring early-stage backend code deployment or infrastructure scaling.
+              What initially appeared to be a one-off implementation became an exercise in designing 
+              for future growth. Introducing routing, dynamic attribution, and a centralized application 
+              flow created a foundation that could be <b>adapted to larger multi-location acquisition projects</b> 
+              without requiring fundamental architectural changes.
             </p>
-            <p>
-              <b>Modular Core Efficiency:</b> Centralizing data ingestion into a single dynamic component rather than managing duplicate form instances significantly reduces development friction and guarantees codebase maintainability.
+             <p>
+              This project reinforced the value of <b>extending existing systems instead of replacing them 
+              outright.</b> By building lightweight layers around proven infrastructure, it was possible to 
+              improve attribution, observability, and maintainability while preserving existing business 
+              processes.
             </p>
+            
 
             <a href="https://cashloansexperts.com" target="_blank" rel="noreferrer" className="nav-button secondary">
               View Active Framework ↗
@@ -416,7 +607,7 @@ if (partnerId && locationId) {
               <a href="/case-studies/clex">Explore Project →</a>
             </div>
 
-            <a href="/case-studies" className="nav-button ghost">
+            <a href="/casestudies" className="nav-button ghost">
               ← Back to Portfolio Index
             </a>
           </section>
