@@ -12,6 +12,11 @@
   --font-mono: var(--font-geist-mono);
 }
 
+@theme {
+  --font-heading: var(--font-cal-sans);
+  --font-sans: var(--font-geist);
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -163,6 +168,7 @@ ul {
   list-style-type: circle; 
   margin-left: 1rem;
   margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .findings-list li {
@@ -199,10 +205,10 @@ ul {
   color: #471b48;
 }
 
-.hero-subtitle {
-  font-size: 1.3rem;
+.content .hero-subtitle {
+  font-size: clamp(14px, 2.2vw, 21px);
   max-width: 700px;
-  line-height: 1.1;
+  line-height: 1.2;
 }
 
 .snapshot-card {
@@ -759,6 +765,14 @@ ul {
   color: #fff;
 }
 
+
+span.bubblestring {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  line-height: 1.75;
+  color: #fff;
+}
+
 .snapshot-bubble p {
   margin: .5rem 0 0;
   max-width: 90px;
@@ -1083,7 +1097,7 @@ ul {
 
   .hero-subtitle {
     font-size: 1.05rem;
-    line-height: 1.5;
+    line-height: 1.1;
   }
 
   /* Snapshot Grid: Reposition to 2x2 layout */
