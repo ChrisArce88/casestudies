@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import ImageModal from "../../components/ImageModal";
 import MiniCarousel from "../../components/MiniCarousel";
+import Link from 'next/link';
 
 interface ModalData {
   src: string;
@@ -499,9 +500,16 @@ of supporting future multi-brand integrations with minimal additional complexity
               must function less as storage layers and more as identity resolution engines.
             </div>
 
-            <a href="/case-studies/retail-funnel" className="nav-button secondary">
-              View Previous Case Study ↗
-            </a>
+            <div className="w-full flex justify-center py-12 border-t border-gray-100 bg-gray-50">
+  <Link
+    href="/#work"
+    className="nav-button ghost"
+  >
+    ← Back to Index
+  </Link>
+</div>
+
+
           </section>
         </article>
       </main>

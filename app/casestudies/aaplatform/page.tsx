@@ -5,6 +5,7 @@ import globalStyles from "@/styles/global.css";
 import Image from "next/image";
 import ImageModal from "../../components/ImageModal";
 import MiniCarousel from "../../components/MiniCarousel";
+import Link from 'next/link';
 
 interface ModalData {
   src: string;
@@ -103,7 +104,7 @@ export default function CashloanExperts() {
         <article className="content">
           <section className="hero">
             <span className="badge"><a href="https://cashloansexperts.com" target="_blank" rel="noreferrer">Live Project</a></span>
-            <h1>Cash Loans Experts</h1>
+            <h1>Unified Acquisition & Attribution Platform</h1>
             <p className="hero-subtitle">Building a scalable acquisition and attribution platform for a multi-partner lending network.</p>
           </section>
           
@@ -717,7 +718,7 @@ export default function CashloanExperts() {
       <h2>Early Launch Results</h2>
       <p>
         To evaluate the direct performance impact of the newly deployed dynamic platform, 
-        we tracked baseline vs. live metrics during the first week following the relaunch.
+        we tracked baseline vs. live metrics during the first 10 days following the relaunch.
       </p>
       
       <div className="clex-results-table-wrapper">
@@ -741,6 +742,11 @@ export default function CashloanExperts() {
               <td>+128%</td>
             </tr>
             <tr>
+              <td>Inbound Quality Leads</td>
+              <td>38%</td>
+              <td>51%</td>
+            </tr>
+            <tr>
               <td>Avg. Engagement Time</td>
               <td>21s</td>
               <td>48s</td>
@@ -755,7 +761,7 @@ export default function CashloanExperts() {
       </div>
 
       <div className="clex-results-blockquote">
-        While the sample size was still limited during the first week after launch, the results 
+        While the sample size was still limited a bit after the first week after launch, the results 
         showed <b>a clear improvement in engagement and conversion trends.</b> These early indicators 
         were strong enough to support a recommendation to <b>begin allocating paid media budget</b> to 
         the new experience.
@@ -771,57 +777,38 @@ export default function CashloanExperts() {
             and customer experience.</p>
           <p>The project reinforced the importance of designing scalable systems early, particularly 
             when <b>supporting a growing network of partners and locations.</b></p>
+            </section>  
 
+<section className="case-navigation">
  <a
-    href="https://cashloansexperts.com"
-    target="_blank"
-    rel="noreferrer"
-    className="nav-button secondary"
-  >
-    View Live ↗
-  </a>
-</section>  
-
- <section className="case-navigation">
-
-  <div className="next-case-card">
-
-    <span>Next Case Study</span>
-
-    <h3>Champion Auto Finance</h3>
-
-    <p>
-      Improving continuity across a multi-step qualification journey.
-    </p>
-
-    <a href="/case-studies/champion">
-      Explore Project →
+      href="https://cashloansexperts.com"
+      target="_blank"
+      rel="noreferrer"
+      className="nav-button secondary"
+    >
+      View Live ↗
     </a>
+  </section>
 
-  </div>
-
-  <a
-    href="/case-studies"
+  <div className="w-full flex justify-center py-12 border-t border-gray-100 bg-gray-50">
+  <Link
+    href="/#work"
     className="nav-button ghost"
   >
     ← Back to Index
-  </a>
+  </Link>
+</div>
 
-</section>
 </article>
-      </main>
+</main>
 
-      {/* Modal / Lightbox */}
-      {modalState.image && (
-        <ImageModal
-          isOpen={modalState.isOpen}
-          onClose={closeModal}
-          src={modalState.image.src}
-          alt={modalState.image.alt}
-          width={modalState.image.width}
-          height={modalState.image.height}
-        />
-      )}
-    </>
-  );
+
+
+<ImageModal
+  isOpen={modalState.isOpen}
+  image={modalState.image}
+  onClose={closeModal}
+/>
+</>
+);
 }

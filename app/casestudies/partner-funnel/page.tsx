@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import ImageModal from "../../components/ImageModal";
 import MiniCarousel from "../../components/MiniCarousel";
+import Link from 'next/link';
 
 interface ModalData {
   src: string;
@@ -606,16 +607,16 @@ to support every retail location.</b></div>
 
           {/* Final Navigation */}
           <section className="case-navigation">
-            <div className="next-case-card">
-              <span>Next Case Study</span>
-              <h3>Cash Loans Experts</h3>
-              <p>Building a scalable acquisition and attribution platform for multi-partner networks.</p>
-              <a href="/case-studies/clex">Explore Project →</a>
-            </div>
 
-            <a href="/casestudies" className="nav-button ghost">
-              ← Back to Portfolio Index
-            </a>
+
+            <div className="w-full flex justify-center py-12 border-t border-gray-100 bg-gray-50">
+  <Link
+    href="/#work"
+    className="nav-button ghost"
+  >
+    ← Back to Index
+  </Link>
+</div>
           </section>
         </article>
       </main>

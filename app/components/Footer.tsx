@@ -9,13 +9,13 @@ export default function Footer() {
         {/* Left Side: Identity & Contact */}
         <div className="flex flex-col gap-1">
           <span className="font-heading text-lg font-bold tracking-wider uppercase">
-            Tu Nombre
+            Let’s work together
           </span>
           <Link 
-            href="mailto:your-email@domain.com" 
+            href="mailto:chris.arce882@gmail.com" 
             className="text-sm text-gray-400 hover:text-white transition-colors"
           >
-            your-email@domain.com
+            My Email
           </Link>
         </div>
 
@@ -23,21 +23,14 @@ export default function Footer() {
         <div className="flex flex-col md:items-end gap-2">
           <div className="flex gap-4 text-sm font-medium tracking-wide uppercase">
             <a 
-              href="https://linkedin.com/in/tu-perfil" 
+              href="https://linkedin.com/in/chrisarce288/" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="text-gray-400 hover:text-white transition-colors"
             >
               LinkedIn
             </a>
-            <a 
-              href="https://github.com/tu-usuario" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-gray-400 hover:text-white transition-colors"
-            >
-              GitHub
-            </a>
+           
           </div>
           <p className="text-xs text-gray-500 font-mono mt-1">
             Built with Next.js
