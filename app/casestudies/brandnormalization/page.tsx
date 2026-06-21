@@ -515,15 +515,15 @@ of supporting future multi-brand integrations with minimal additional complexity
       </main>
 
       {/* Lightbox Modal */}
-      {modalState.image && (
-        <ImageModal
-          isOpen={modalState.isOpen}
-          onClose={closeModal}
-          src={modalState.image.src}
-          alt={modalState.image.alt}
-          width={modalState.image.width}
-          height={modalState.image.height}
-        />
+            {modalState.image && (
+              <ImageModal
+                isOpen={modalState.isOpen}
+                onClose={closeModal}
+                src={modalState.image.src}
+                alt={modalState.image.alt}
+                width={modalState.image.width}
+                height={modalState.image.height}
+              />
       )}
     </>
   );

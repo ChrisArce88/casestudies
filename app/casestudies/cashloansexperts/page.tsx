@@ -806,8 +806,11 @@ export default function CashloanExperts() {
 
 <ImageModal
   isOpen={modalState.isOpen}
-  image={modalState.image}
   onClose={closeModal}
+  src={modalState.image?.src || ""}
+  alt={modalState.image?.alt || ""}
+  width={modalState.image?.width}
+  height={modalState.image?.height}
 />
 </>
 );
